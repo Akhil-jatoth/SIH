@@ -148,15 +148,16 @@ export const Navbar: React.FC = () => {
 
             {/* User Badge */}
             <div className="flex items-center gap-2 pl-2 border-l border-white/20">
-              <div className="w-8 h-8 rounded-xl bg-white/20 border border-white/30 flex items-center justify-center text-white text-xs font-bold shadow-sm">
-                {user?.username?.charAt(0).toUpperCase() || 'I'}
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-700 border border-amber-300/40 flex items-center justify-center text-slate-950 text-xs font-black shadow-sm">
+                {user?.name ? user.name.split(' ').map(n => n[0]).slice(0, 2).join('') : 'CBI'}
               </div>
               <div className="hidden xl:block text-left text-xs">
-                <div className="font-bold text-white leading-tight">
-                  {user?.username || 'Officer'}
+                <div className="font-bold text-white leading-tight flex items-center gap-1">
+                  <span>{user?.name || user?.username || 'CBI Officer'}</span>
+                  <span className="text-[9px] px-1 py-0.2 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-mono">CBI</span>
                 </div>
-                <div className="text-[10px] text-purple-200 leading-tight font-medium">
-                  {user?.role || 'Investigator'}
+                <div className="text-[10px] text-purple-200 leading-tight font-mono">
+                  {user?.badgeNumber || user?.role || 'IO-CBI-7729'}
                 </div>
               </div>
               <button
@@ -165,7 +166,7 @@ export const Navbar: React.FC = () => {
                   navigate('/login');
                 }}
                 className="p-1.5 text-purple-200 hover:text-rose-300 hover:bg-rose-500/20 rounded-lg transition-colors cursor-pointer"
-                title="Sign out"
+                title="Sign out of CBI Console"
               >
                 <LogOut className="w-4 h-4" />
               </button>

@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Radio, Lock, Clock, AlertTriangle } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 export const OfficialHeaderBar: React.FC = () => {
+  const { user } = useAuth();
   const [timeState, setTimeState] = useState({
     ist: '',
     utc: '',
@@ -40,7 +42,7 @@ export const OfficialHeaderBar: React.FC = () => {
         <div className="flex items-center gap-2.5">
           <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/40 text-amber-400 font-bold tracking-wider">
             <Shield className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-            <span>MHA // I4C</span>
+            <span>CBI // NATGRID</span>
           </div>
 
           <span className="hidden sm:inline text-slate-500">|</span>
@@ -57,7 +59,7 @@ export const OfficialHeaderBar: React.FC = () => {
           <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
           <span className="font-bold tracking-wider">THREAT LEVEL: DEFCON-3 (ELEVATED)</span>
           <span className="text-slate-500">|</span>
-          <span className="text-slate-400">SYNC: NATGRID-SECURE (99.98%)</span>
+          <span className="text-slate-400">CLEARANCE: {user?.clearanceLevel || 'LEVEL-V TOP SECRET'}</span>
         </div>
 
         {/* Right: Live IST/UTC Radar Clock & Badge */}
@@ -69,8 +71,8 @@ export const OfficialHeaderBar: React.FC = () => {
           </div>
 
           <div className="hidden sm:flex items-center gap-1 px-2 py-0.5 rounded bg-slate-800/80 border border-slate-700 text-slate-300 text-[10px] font-semibold">
-            <span>BADGE:</span>
-            <span className="text-emerald-400 font-bold">IO-CBI-7729</span>
+            <span>OFFICER BADGE:</span>
+            <span className="text-emerald-400 font-bold">{user?.badgeNumber || 'CBI-HQ-8841-DL'}</span>
           </div>
         </div>
       </div>
