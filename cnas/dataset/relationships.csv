@@ -1,0 +1,130 @@
+rel_id,source_entity_id,source_name,source_type,target_entity_id,target_name,target_type,relation_type,confidence_weight,case_id,case_title
+1,1,Kabir Khan,Person,2,Vikram Malhotra,Person,associate_of,1.0,1,Operation Iron Grid
+2,1,Kabir Khan,Person,3,Pooja Singhal,Person,associate_of,0.9,1,Operation Iron Grid
+3,1,Kabir Khan,Person,4,Tariq Sheikh,Person,commands,1.0,1,Operation Iron Grid
+4,1,Kabir Khan,Person,7,+91-98110-11223 (Burner Prim),Phone,owns,1.0,1,Operation Iron Grid
+5,1,Kabir Khan,Person,5,DL-01-AB-9988 (Toyota Fortuner),Vehicle,uses,0.8,4,Operation Falcon Wing
+6,1,Kabir Khan,Person,11,Old Delhi Safehouse #4,Location,co_located,0.9,11,Case #2025-DL-302: Red Fort Espionage
+7,2,Vikram Malhotra,Person,12,Gurugram Corporate Front (Apex Trading),Organization,owns,1.0,2,Case #2024-ND-89: Hawala Matrix
+8,2,Vikram Malhotra,Person,9,HDFC Acc #908129031,Account,controls,1.0,2,Case #2024-ND-89: Hawala Matrix
+9,2,Vikram Malhotra,Person,10,ICICI Shell Acc #330192831,Account,transacted_with,0.9,2,Case #2024-ND-89: Hawala Matrix
+10,2,Vikram Malhotra,Person,8,+91-98110-44556 (Encrypted Line),Phone,owns,1.0,1,Operation Iron Grid
+11,3,Pooja Singhal,Person,6,DL-04-XY-4512 (Hyundai Creta),Vehicle,owns,1.0,4,Operation Falcon Wing
+12,3,Pooja Singhal,Person,14,Haryana Transit Warehouse,Location,co_located,0.8,4,Operation Falcon Wing
+13,3,Pooja Singhal,Person,13,Rohit Rawat,Person,commands,0.8,4,Operation Falcon Wing
+14,4,Tariq Sheikh,Person,11,Old Delhi Safehouse #4,Location,co_located,0.8,9,Project Nightfall
+15,4,Tariq Sheikh,Person,13,Rohit Rawat,Person,associate_of,0.7,9,Project Nightfall
+16,13,Rohit Rawat,Person,14,Haryana Transit Warehouse,Location,co_located,0.7,4,Operation Falcon Wing
+17,12,Gurugram Corporate Front (Apex Trading),Organization,9,HDFC Acc #908129031,Account,transacted_with,0.95,2,Case #2024-ND-89: Hawala Matrix
+18,12,Gurugram Corporate Front (Apex Trading),Organization,55,Swift Global Logistics Ltd,Organization,transacted_with,0.85,2,Case #2024-ND-89: Hawala Matrix
+19,7,+91-98110-11223 (Burner Prim),Phone,8,+91-98110-44556 (Encrypted Line),Phone,called,0.9,1,Operation Iron Grid
+20,8,+91-98110-44556 (Encrypted Line),Phone,9,HDFC Acc #908129031,Account,associated_with,0.6,2,Case #2024-ND-89: Hawala Matrix
+21,15,Rahul Verma,Person,26,Verma Diamond Exports Pvt Ltd,Organization,owns,1.0,2,Case #2024-ND-89: Hawala Matrix
+22,15,Rahul Verma,Person,16,Sameer Merchant,Person,associate_of,0.9,6,Operation Dark Port
+23,15,Rahul Verma,Person,17,Fatima Zaidi,Person,associate_of,0.95,2,Case #2024-ND-89: Hawala Matrix
+24,15,Rahul Verma,Person,20,+91-98200-55441 (Secured Line),Phone,owns,1.0,5,Case #2025-MH-104: Ghost Callers
+25,15,Rahul Verma,Person,18,MH-02-CD-7744 (Mercedes E-Class),Vehicle,owns,0.9,2,Case #2024-ND-89: Hawala Matrix
+26,15,Rahul Verma,Person,24,Zaveri Bazaar Vault & Office,Location,co_located,1.0,2,Case #2024-ND-89: Hawala Matrix
+27,15,Rahul Verma,Person,22,Axis Hawala Conduit Acc #771290,Account,controls,1.0,2,Case #2024-ND-89: Hawala Matrix
+28,17,Fatima Zaidi,Person,23,Kotak Offshore Holding Acc #550211,Account,controls,1.0,2,Case #2024-ND-89: Hawala Matrix
+29,17,Fatima Zaidi,Person,21,+91-98200-99334 (Satellite SIM),Phone,owns,1.0,5,Case #2025-MH-104: Ghost Callers
+30,17,Fatima Zaidi,Person,24,Zaveri Bazaar Vault & Office,Location,co_located,0.8,2,Case #2024-ND-89: Hawala Matrix
+31,16,Sameer Merchant,Person,27,Merchant Cargo Movers,Organization,owns,1.0,6,Operation Dark Port
+32,16,Sameer Merchant,Person,28,Farhan Qureshi,Person,commands,0.85,6,Operation Dark Port
+33,16,Sameer Merchant,Person,25,Nhava Sheva Port Dock Yard #3,Location,co_located,0.9,6,Operation Dark Port
+34,28,Farhan Qureshi,Person,25,Nhava Sheva Port Dock Yard #3,Location,co_located,0.9,6,Operation Dark Port
+35,28,Farhan Qureshi,Person,19,GJ-01-EE-1290 (Tata Truck Fleet),Vehicle,operates,0.8,6,Operation Dark Port
+36,27,Merchant Cargo Movers,Organization,19,GJ-01-EE-1290 (Tata Truck Fleet),Vehicle,owns,1.0,6,Operation Dark Port
+37,26,Verma Diamond Exports Pvt Ltd,Organization,22,Axis Hawala Conduit Acc #771290,Account,transacted_with,1.0,2,Case #2024-ND-89: Hawala Matrix
+38,22,Axis Hawala Conduit Acc #771290,Account,23,Kotak Offshore Holding Acc #550211,Account,transacted_with,0.95,2,Case #2024-ND-89: Hawala Matrix
+39,20,+91-98200-55441 (Secured Line),Phone,21,+91-98200-99334 (Satellite SIM),Phone,called,0.88,5,Case #2025-MH-104: Ghost Callers
+40,29,Arjun Mehta,Person,40,NovaCore Cybersecurity Labs,Organization,owns,1.0,3,The Bengaluru Crypto Heist
+41,29,Arjun Mehta,Person,30,Priya Sharma,Person,associate_of,0.95,3,The Bengaluru Crypto Heist
+42,29,Arjun Mehta,Person,31,Karthik Reddy,Person,commands,0.85,8,Case #2025-HYD-55: Tech Park Extortion
+43,29,Arjun Mehta,Person,34,+91-98450-12345 (Burner e-SIM),Phone,owns,1.0,7,The Cyber Syndicate V3
+44,29,Arjun Mehta,Person,36,Tether Cold Wallet (0x7a3...f91),Account,controls,1.0,3,The Bengaluru Crypto Heist
+45,29,Arjun Mehta,Person,37,Monero Master Pool (48bX...9kL),Account,transacted_with,0.9,3,The Bengaluru Crypto Heist
+46,29,Arjun Mehta,Person,38,Indiranagar Tech Lab Hub,Location,co_located,0.95,7,The Cyber Syndicate V3
+47,29,Arjun Mehta,Person,32,KA-03-MG-5566 (BMW 330i),Vehicle,owns,0.8,3,The Bengaluru Crypto Heist
+48,30,Priya Sharma,Person,41,BitTrace Technologies,Organization,owns,1.0,3,The Bengaluru Crypto Heist
+49,30,Priya Sharma,Person,36,Tether Cold Wallet (0x7a3...f91),Account,transacted_with,0.95,3,The Bengaluru Crypto Heist
+50,30,Priya Sharma,Person,35,+91-98450-67890 (VoIP Virtual #),Phone,owns,1.0,8,Case #2025-HYD-55: Tech Park Extortion
+51,30,Priya Sharma,Person,33,TS-09-FA-8899 (Tesla Model 3),Vehicle,owns,0.7,8,Case #2025-HYD-55: Tech Park Extortion
+52,30,Priya Sharma,Person,39,HITEC City Server Farm,Location,co_located,0.9,8,Case #2025-HYD-55: Tech Park Extortion
+53,31,Karthik Reddy,Person,35,+91-98450-67890 (VoIP Virtual #),Phone,operates,0.9,8,Case #2025-HYD-55: Tech Park Extortion
+54,31,Karthik Reddy,Person,42,Naveen Iyer,Person,associate_of,0.75,7,The Cyber Syndicate V3
+55,42,Naveen Iyer,Person,39,HITEC City Server Farm,Location,co_located,0.85,7,The Cyber Syndicate V3
+56,40,NovaCore Cybersecurity Labs,Organization,38,Indiranagar Tech Lab Hub,Location,located_at,1.0,7,The Cyber Syndicate V3
+57,41,BitTrace Technologies,Organization,39,HITEC City Server Farm,Location,located_at,1.0,8,Case #2025-HYD-55: Tech Park Extortion
+58,34,+91-98450-12345 (Burner e-SIM),Phone,35,+91-98450-67890 (VoIP Virtual #),Phone,called,0.8,8,Case #2025-HYD-55: Tech Park Extortion
+59,36,Tether Cold Wallet (0x7a3...f91),Account,37,Monero Master Pool (48bX...9kL),Account,transacted_with,0.95,3,The Bengaluru Crypto Heist
+60,43,Ananya Das,Person,53,Eastern Silk & Logistics Hub,Organization,owns,1.0,10,Operation Silver Line
+61,43,Ananya Das,Person,44,Subhash Roy,Person,associate_of,0.9,10,Operation Silver Line
+62,43,Ananya Das,Person,45,Bikramjit Sen,Person,associate_of,0.75,6,Operation Dark Port
+63,43,Ananya Das,Person,48,+91-98300-11998 (Bangla Border Roam),Phone,owns,1.0,10,Operation Silver Line
+64,43,Ananya Das,Person,50,State Bank Trade Acc #1092831,Account,controls,1.0,10,Operation Silver Line
+65,43,Ananya Das,Person,52,Petrapole Border Transit Depot,Location,co_located,0.85,10,Operation Silver Line
+66,44,Subhash Roy,Person,47,WB-19-TR-7821 (Ashok Leyland Cargo),Vehicle,owns,0.9,10,Operation Silver Line
+67,44,Subhash Roy,Person,49,+91-98300-44771 (Encrypted Signal),Phone,owns,1.0,10,Operation Silver Line
+68,44,Subhash Roy,Person,52,Petrapole Border Transit Depot,Location,co_located,0.95,10,Operation Silver Line
+69,45,Bikramjit Sen,Person,54,Bayan Shipping Lines,Organization,owns,1.0,6,Operation Dark Port
+70,45,Bikramjit Sen,Person,51,Howrah Inland Container Depot,Location,co_located,0.85,6,Operation Dark Port
+71,45,Bikramjit Sen,Person,46,WB-02-AK-1100 (Mahindra Scorpio),Vehicle,owns,0.7,6,Operation Dark Port
+72,53,Eastern Silk & Logistics Hub,Organization,50,State Bank Trade Acc #1092831,Account,transacted_with,0.9,10,Operation Silver Line
+73,53,Eastern Silk & Logistics Hub,Organization,51,Howrah Inland Container Depot,Location,located_at,0.8,10,Operation Silver Line
+74,48,+91-98300-11998 (Bangla Border Roam),Phone,49,+91-98300-44771 (Encrypted Signal),Phone,called,0.85,10,Operation Silver Line
+75,2,Vikram Malhotra,Person,56,Hawala Clearing House Alpha,Organization,member_of,0.95,2,Case #2024-ND-89: Hawala Matrix
+76,15,Rahul Verma,Person,56,Hawala Clearing House Alpha,Organization,member_of,0.98,2,Case #2024-ND-89: Hawala Matrix
+77,9,HDFC Acc #908129031,Account,56,Hawala Clearing House Alpha,Organization,transacted_with,0.9,2,Case #2024-ND-89: Hawala Matrix
+78,22,Axis Hawala Conduit Acc #771290,Account,56,Hawala Clearing House Alpha,Organization,transacted_with,0.92,2,Case #2024-ND-89: Hawala Matrix
+79,2,Vikram Malhotra,Person,15,Rahul Verma,Person,transacted_with,0.88,2,Case #2024-ND-89: Hawala Matrix
+80,8,+91-98110-44556 (Encrypted Line),Phone,20,+91-98200-55441 (Secured Line),Phone,called,0.85,5,Case #2025-MH-104: Ghost Callers
+81,15,Rahul Verma,Person,57,DarkPool Mixer Node #9,Organization,transacted_with,0.92,3,The Bengaluru Crypto Heist
+82,17,Fatima Zaidi,Person,57,DarkPool Mixer Node #9,Organization,transacted_with,0.89,3,The Bengaluru Crypto Heist
+83,29,Arjun Mehta,Person,57,DarkPool Mixer Node #9,Organization,controls,0.98,3,The Bengaluru Crypto Heist
+84,30,Priya Sharma,Person,57,DarkPool Mixer Node #9,Organization,operates,0.94,3,The Bengaluru Crypto Heist
+85,23,Kotak Offshore Holding Acc #550211,Account,36,Tether Cold Wallet (0x7a3...f91),Account,transacted_with,0.88,3,The Bengaluru Crypto Heist
+86,20,+91-98200-55441 (Secured Line),Phone,34,+91-98450-12345 (Burner e-SIM),Phone,called,0.79,7,The Cyber Syndicate V3
+87,55,Swift Global Logistics Ltd,Organization,14,Haryana Transit Warehouse,Location,operates,0.88,4,Operation Falcon Wing
+88,55,Swift Global Logistics Ltd,Organization,51,Howrah Inland Container Depot,Location,operates,0.9,10,Operation Silver Line
+89,55,Swift Global Logistics Ltd,Organization,5,DL-01-AB-9988 (Toyota Fortuner),Vehicle,owns,0.75,4,Operation Falcon Wing
+90,3,Pooja Singhal,Person,55,Swift Global Logistics Ltd,Organization,associate_of,0.82,4,Operation Falcon Wing
+91,43,Ananya Das,Person,55,Swift Global Logistics Ltd,Organization,transacted_with,0.86,10,Operation Silver Line
+92,5,DL-01-AB-9988 (Toyota Fortuner),Vehicle,51,Howrah Inland Container Depot,Location,co_located,0.7,10,Operation Silver Line
+93,27,Merchant Cargo Movers,Organization,54,Bayan Shipping Lines,Organization,partner_with,0.84,6,Operation Dark Port
+94,16,Sameer Merchant,Person,45,Bikramjit Sen,Person,associate_of,0.78,6,Operation Dark Port
+95,19,GJ-01-EE-1290 (Tata Truck Fleet),Vehicle,51,Howrah Inland Container Depot,Location,co_located,0.72,6,Operation Dark Port
+96,60,Sunil 'Bhai' Deshmukh,Person,1,Kabir Khan,Person,associate_of,0.96,15,Operation Shadow Hawk
+97,60,Sunil 'Bhai' Deshmukh,Person,15,Rahul Verma,Person,associate_of,0.98,15,Operation Shadow Hawk
+98,60,Sunil 'Bhai' Deshmukh,Person,29,Arjun Mehta,Person,associate_of,0.92,15,Operation Shadow Hawk
+99,60,Sunil 'Bhai' Deshmukh,Person,43,Ananya Das,Person,associate_of,0.9,15,Operation Shadow Hawk
+100,60,Sunil 'Bhai' Deshmukh,Person,61,+91-98999-00001 (High-Priority Flag),Phone,owns,1.0,15,Operation Shadow Hawk
+101,60,Sunil 'Bhai' Deshmukh,Person,62,National Hawala Bridge Acc #999000,Account,controls,1.0,15,Operation Shadow Hawk
+102,60,Sunil 'Bhai' Deshmukh,Person,58,Safehouse Cyber Hub Jaipur,Location,co_located,0.85,15,Operation Shadow Hawk
+103,60,Sunil 'Bhai' Deshmukh,Person,59,Ahmedabad Bullion Clearing House,Location,co_located,0.88,12,Operation Golden Route
+104,1,Kabir Khan,Person,58,Safehouse Cyber Hub Jaipur,Location,co_located,0.8,15,Operation Shadow Hawk
+105,15,Rahul Verma,Person,59,Ahmedabad Bullion Clearing House,Location,co_located,0.85,12,Operation Golden Route
+106,61,+91-98999-00001 (High-Priority Flag),Phone,7,+91-98110-11223 (Burner Prim),Phone,called,0.92,15,Operation Shadow Hawk
+107,61,+91-98999-00001 (High-Priority Flag),Phone,20,+91-98200-55441 (Secured Line),Phone,called,0.95,15,Operation Shadow Hawk
+108,61,+91-98999-00001 (High-Priority Flag),Phone,34,+91-98450-12345 (Burner e-SIM),Phone,called,0.89,15,Operation Shadow Hawk
+109,62,National Hawala Bridge Acc #999000,Account,9,HDFC Acc #908129031,Account,transacted_with,0.91,15,Operation Shadow Hawk
+110,62,National Hawala Bridge Acc #999000,Account,22,Axis Hawala Conduit Acc #771290,Account,transacted_with,0.96,15,Operation Shadow Hawk
+111,62,National Hawala Bridge Acc #999000,Account,36,Tether Cold Wallet (0x7a3...f91),Account,transacted_with,0.94,15,Operation Shadow Hawk
+112,62,National Hawala Bridge Acc #999000,Account,50,State Bank Trade Acc #1092831,Account,transacted_with,0.87,15,Operation Shadow Hawk
+113,11,Old Delhi Safehouse #4,Location,7,+91-98110-11223 (Burner Prim),Phone,co_located,0.8,1,Operation Iron Grid
+114,24,Zaveri Bazaar Vault & Office,Location,20,+91-98200-55441 (Secured Line),Phone,co_located,0.85,2,Case #2024-ND-89: Hawala Matrix
+115,38,Indiranagar Tech Lab Hub,Location,34,+91-98450-12345 (Burner e-SIM),Phone,co_located,0.85,7,The Cyber Syndicate V3
+116,52,Petrapole Border Transit Depot,Location,48,+91-98300-11998 (Bangla Border Roam),Phone,co_located,0.8,10,Operation Silver Line
+117,2,Vikram Malhotra,Person,5,DL-01-AB-9988 (Toyota Fortuner),Vehicle,passenger_in,0.65,4,Operation Falcon Wing
+118,15,Rahul Verma,Person,23,Kotak Offshore Holding Acc #550211,Account,beneficiary_of,0.92,2,Case #2024-ND-89: Hawala Matrix
+119,29,Arjun Mehta,Person,41,BitTrace Technologies,Organization,consults_for,0.75,3,The Bengaluru Crypto Heist
+120,43,Ananya Das,Person,46,WB-02-AK-1100 (Mahindra Scorpio),Vehicle,passenger_in,0.6,6,Operation Dark Port
+121,44,Subhash Roy,Person,53,Eastern Silk & Logistics Hub,Organization,operations_head,0.8,10,Operation Silver Line
+122,3,Pooja Singhal,Person,12,Gurugram Corporate Front (Apex Trading),Organization,secretary_of,0.7,2,Case #2024-ND-89: Hawala Matrix
+123,16,Sameer Merchant,Person,22,Axis Hawala Conduit Acc #771290,Account,transacted_with,0.72,2,Case #2024-ND-89: Hawala Matrix
+124,31,Karthik Reddy,Person,38,Indiranagar Tech Lab Hub,Location,co_located,0.8,7,The Cyber Syndicate V3
+125,17,Fatima Zaidi,Person,59,Ahmedabad Bullion Clearing House,Location,visited,0.77,12,Operation Golden Route
+126,1,Kabir Khan,Person,59,Ahmedabad Bullion Clearing House,Location,visited,0.75,12,Operation Golden Route
+127,4,Tariq Sheikh,Person,14,Haryana Transit Warehouse,Location,visited,0.7,4,Operation Falcon Wing
+128,13,Rohit Rawat,Person,6,DL-04-XY-4512 (Hyundai Creta),Vehicle,operates,0.75,4,Operation Falcon Wing
+129,45,Bikramjit Sen,Person,52,Petrapole Border Transit Depot,Location,inspected,0.65,10,Operation Silver Line

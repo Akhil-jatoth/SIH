@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #A952B9;
+    background-image: 
+      radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(52, 16, 56, 0.45) 0%, transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(146, 59, 159, 0.3) 0%, transparent 50%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    color: #ffffff;
+  }
+}
+
+/* Frosted Glass Panels on #A952B9 */
+.glass-panel {
+  background: rgba(46, 12, 50, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 10px 36px 0 rgba(35, 5, 38, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(56, 15, 61, 0.85);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 14px 40px 0 rgba(35, 5, 38, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+}
+
+/* Glow Borders */
+.glow-blue:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 0 25px -3px rgba(56, 189, 248, 0.5);
+}
+
+.glow-green:hover {
+  border-color: #34d399;
+  box-shadow: 0 0 25px -3px rgba(52, 211, 153, 0.5);
+}
+
+.glow-red:hover {
+  border-color: #f87171;
+  box-shadow: 0 0 25px -3px rgba(248, 113, 113, 0.5);
+}
+
+.glow-amber:hover {
+  border-color: #fbbf24;
+  box-shadow: 0 0 25px -3px rgba(251, 191, 36, 0.5);
+}
+
+.glow-purple:hover {
+  border-color: #e879f9;
+  box-shadow: 0 0 25px -3px rgba(232, 121, 249, 0.5);
+}
+
+/* Custom Purple Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(46, 12, 50, 0.6);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Leaflet Customizations on dark theme */
+.leaflet-container {
+  background: #080c14 !important;
+  font-family: 'Inter', sans-serif !important;
+  border-radius: 14px;
+}
+
+.dark-map-tiles {
+  filter: brightness(0.65) invert(1) contrast(3.5) hue-rotate(200deg) saturate(0.3) brightness(0.75);
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(15, 23, 42, 0.95) !important;
+  backdrop-filter: blur(16px) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 30px -4px rgba(0, 0, 0, 0.6) !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(15, 23, 42, 0.95) !important;
+}
+
+/* Subtle Grid */
+.cyber-grid {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+

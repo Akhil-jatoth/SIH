@@ -1,0 +1,9 @@
+cdr_id,caller_name,caller_msisdn,receiver_name,receiver_msisdn,call_duration_seconds,call_type,cell_tower_bts,circle_city,timestamp,risk_flag
+CDR-001,Sunil 'Bhai' Deshmukh,+91-98999-00001,Kabir Khan,+91-98110-11223,420,Encrypted VoIP/GSM,BTS-DEL-4091,Old Delhi,2026-03-01 02:14:00 IST,HIGH
+CDR-002,Kabir Khan,+91-98110-11223,Rahul Verma,+91-98200-55441,185,Burner Direct,BTS-MAH-3481,Mumbai BKC,2026-03-02 11:30:00 IST,HIGH
+CDR-003,Rahul Verma,+91-98200-55441,Arjun Mehta,+91-98450-12345,310,Signal Encrypted,BTS-BLR-9021,Bengaluru Indiranagar,2026-03-03 16:45:00 IST,CRITICAL
+CDR-004,Vikram Malhotra,+91-98110-33211,Tariq Sheikh,+91-98300-11998,65,VoIP Burst,BTS-WB-7712,Petrapole Border,2026-03-04 23:55:00 IST,CRITICAL
+CDR-005,Sunil 'Bhai' Deshmukh,+91-98999-00001,Ananya Das,+91-98300-11998,540,Conference Call,BTS-RAJ-1102,Jaipur Cyber Hub,2026-03-05 14:10:00 IST,MEDIUM
+CDR-006,Priya Sharma,+91-98450-12345,Kabir Khan,+91-98110-11223,95,Brief Handoff,BTS-HYD-5520,Hyderabad Hitec City,2026-03-06 09:20:00 IST,HIGH
+CDR-007,Farhan Qureshi,+91-98200-11229,Tariq Sheikh,+91-98300-11998,412,Cross-Border Trunk,BTS-GUJ-8140,Ahmedabad SG Hwy,2026-03-07 19:30:00 IST,HIGH
+CDR-008,Rohit Rawat,+91-98110-33211,Vikram Malhotra,+91-98999-00001,150,Direct Relay,BTS-DEL-1022,Connaught Place,2026-03-08 13:00:00 IST,HIGH
