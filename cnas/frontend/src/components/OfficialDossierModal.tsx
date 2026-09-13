@@ -50,20 +50,26 @@ export const OfficialDossierModal: React.FC<OfficialDossierModalProps> = ({
   });
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 pt-[144px] pb-6 sm:pt-[148px] bg-black/85 backdrop-blur-md overflow-y-auto official-print-modal print:p-0 print:m-0 print:static print:bg-white print:overflow-visible">
-      <div className="relative w-full max-w-4xl max-h-[calc(100vh-165px)] bg-slate-900 border border-amber-500/40 rounded-2xl shadow-2xl flex flex-col overflow-hidden text-slate-100 print:bg-white print:text-black print:border-none print:shadow-none print:max-h-none print:w-full print:rounded-none print:overflow-visible">
+    <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-6 sm:pt-[148px] bg-slate-950 sm:bg-black/85 sm:backdrop-blur-md overflow-y-auto official-print-modal print:p-0 print:m-0 print:static print:bg-white print:overflow-visible">
+      <div className="relative w-full h-full sm:h-auto sm:max-w-4xl sm:max-h-[calc(100vh-165px)] bg-slate-900 sm:border sm:border-amber-500/40 sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden text-slate-100 print:bg-white print:text-black print:border-none print:shadow-none print:max-h-none print:w-full print:rounded-none print:overflow-visible">
 
         {/* Top Control Header (Non-printable) */}
-        <div className="flex items-center justify-between px-6 py-3.5 bg-slate-950 border-b border-slate-800 print:hidden">
-          <div className="flex items-center gap-2.5">
-            <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-slate-950 border-b border-slate-800 print:hidden shrink-0">
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <button
+              onClick={onClose}
+              className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors sm:hidden flex items-center gap-1 text-xs font-bold font-mono"
+            >
+              <span>← Back</span>
+            </button>
+            <div className="p-1.5 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30 hidden sm:block">
               <Shield className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-sm font-bold text-white font-display">
-                Official Intelligence Dossier Generator
+              <h2 className="text-xs sm:text-sm font-bold text-white font-display">
+                Official Intelligence Dossier
               </h2>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[10px] sm:text-[11px] text-slate-400 hidden sm:block">
                 Print or export statutory law-enforcement case briefing
               </p>
             </div>
@@ -72,14 +78,14 @@ export const OfficialDossierModal: React.FC<OfficialDossierModalProps> = ({
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-md transition-all cursor-pointer"
             >
               <Printer className="w-4 h-4" />
-              <span>Print / Export PDF</span>
+              <span>Print / PDF</span>
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer hidden sm:block"
             >
               <X className="w-5 h-5" />
             </button>

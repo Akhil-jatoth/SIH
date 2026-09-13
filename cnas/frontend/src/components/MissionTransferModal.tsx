@@ -357,41 +357,47 @@ export const MissionTransferModal: React.FC<MissionTransferModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 pt-[144px] pb-6 sm:pt-[148px] bg-black/85 backdrop-blur-md overflow-y-auto">
+    <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-6 sm:pt-[148px] bg-slate-950 sm:bg-black/85 sm:backdrop-blur-md overflow-y-auto">
       {/* Hidden Video & Canvas for WebCam Verification */}
       <video ref={videoRef} autoPlay playsInline muted className="hidden" />
       <canvas ref={canvasRef} className="hidden" />
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        className="relative w-full max-w-4xl max-h-[calc(100vh-165px)] rounded-2xl bg-slate-950 border border-slate-800 shadow-2xl flex flex-col overflow-hidden text-slate-100 font-sans"
+        exit={{ opacity: 0, scale: 0.98 }}
+        className="relative w-full h-full sm:h-auto sm:max-w-4xl sm:max-h-[calc(100vh-165px)] sm:rounded-2xl bg-slate-950 sm:border sm:border-slate-800 shadow-2xl flex flex-col overflow-hidden text-slate-100 font-sans"
       >
         {/* Header */}
-        <div className="p-4 sm:p-5 border-b border-slate-800 bg-slate-900/80 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-700 flex items-center justify-center text-slate-950 shadow-md">
+        <div className="p-3.5 sm:p-5 border-b border-slate-800 bg-slate-900/80 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={onClose}
+              className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors sm:hidden flex items-center gap-1 text-xs font-bold font-mono"
+            >
+              <span>← Back</span>
+            </button>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-700 flex items-center justify-center text-slate-950 shadow-md hidden sm:flex">
               <Shield className="w-5 h-5" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h2 className="text-base sm:text-lg font-bold text-white font-display">
-                  CBI Secure Mission Transfer & Handover Protocol
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <h2 className="text-xs sm:text-base font-bold text-white font-display">
+                  CBI Mission Transfer Protocol
                 </h2>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold">
+                <span className="text-[9px] sm:text-[10px] font-mono px-1.5 sm:px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 font-bold">
                   PROT-v2.4
                 </span>
               </div>
-              <p className="text-xs text-slate-400 font-mono">
-                Chain-of-Custody Handover • Hidden Code Word Authentication • Real-Time Intruder Camera Intercept
+              <p className="text-[10px] sm:text-xs text-slate-400 font-mono hidden sm:block">
+                Chain-of-Custody Handover • Hidden Code Word Authentication • Intruder Camera Intercept
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
+            className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors cursor-pointer hidden sm:block"
           >
             <X className="w-5 h-5" />
           </button>

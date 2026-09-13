@@ -164,31 +164,37 @@ export const SuspectRadarModal: React.FC<SuspectRadarModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 pt-[144px] pb-6 sm:pt-[148px] bg-black/85 backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full max-w-4xl bg-slate-900 border border-sky-500/40 rounded-2xl shadow-2xl flex flex-col overflow-hidden text-slate-100 max-h-[calc(100vh-165px)]">
+    <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-6 sm:pt-[148px] bg-slate-950 sm:bg-black/85 sm:backdrop-blur-md overflow-y-auto">
+      <div className="relative w-full h-full sm:h-auto sm:max-w-4xl bg-slate-900 sm:border sm:border-sky-500/40 sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden text-slate-100 sm:max-h-[calc(100vh-165px)]">
 
         {/* Header Bar */}
-        <div className="flex items-center justify-between px-6 py-4 bg-slate-950 border-b border-slate-800">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-xl bg-sky-500/20 text-sky-400 border border-sky-500/30">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 bg-slate-950 border-b border-slate-800 shrink-0">
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <button
+              onClick={onClose}
+              className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors sm:hidden flex items-center gap-1 text-xs font-bold font-mono"
+            >
+              <span>← Back</span>
+            </button>
+            <div className="p-2 rounded-xl bg-sky-500/20 text-sky-400 border border-sky-500/30 hidden sm:block">
               <Radio className="w-5 h-5 animate-pulse" />
             </div>
             <div>
-              <h2 className="text-sm font-bold text-white font-display flex items-center gap-2">
-                Suspect & Live Telecom Radar Locator
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
-                  REAL-TIME GPS / CDR PING
+              <h2 className="text-xs sm:text-sm font-bold text-white font-display flex items-center gap-2">
+                <span>Suspect & Telecom Radar</span>
+                <span className="text-[9px] sm:text-[10px] font-mono px-1.5 sm:px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">
+                  REAL-TIME GPS
                 </span>
               </h2>
-              <p className="text-[11px] text-slate-400">
-                Search by Suspect Name (e.g., 'Kabir Khan') or Phone Number (e.g., '+91-98110-11223' / '98110')
+              <p className="text-[10px] sm:text-[11px] text-slate-400 hidden sm:block">
+                Query mobile intercepts, IMEI triangulations, and suspect geospatial traces
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer hidden sm:block"
           >
             <X className="w-5 h-5" />
           </button>

@@ -238,37 +238,43 @@ DL-1AA-8921 Heavy Freight,Vehicle,0.72,DL-1AA-8921,Tata,Prima Container 40ft,Dar
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 pt-[144px] pb-6 sm:pt-[148px] bg-black/85 backdrop-blur-md overflow-y-auto">
+    <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-4 sm:pt-[148px] bg-[#1d0824] sm:bg-black/85 sm:backdrop-blur-md overflow-y-auto">
       <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 15 }}
+        initial={{ opacity: 0, scale: 0.98, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 15 }}
-        className="w-full max-w-3xl rounded-3xl bg-[#1d0824] border border-fuchsia-500/40 shadow-2xl overflow-hidden flex flex-col max-h-[calc(100vh-165px)]"
+        exit={{ opacity: 0, scale: 0.98, y: 10 }}
+        className="w-full h-full sm:h-auto sm:max-w-3xl sm:rounded-3xl bg-[#1d0824] sm:border sm:border-fuchsia-500/40 shadow-2xl overflow-hidden flex flex-col sm:max-h-[calc(100vh-165px)]"
       >
         {/* Header */}
-        <div className="p-5 bg-gradient-to-r from-fuchsia-950/90 via-purple-950/90 to-[#1d0824] border-b border-fuchsia-500/30 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-fuchsia-500/20 border border-fuchsia-400/40 flex items-center justify-center text-fuchsia-300 shadow-md">
+        <div className="p-3.5 sm:p-5 bg-gradient-to-r from-fuchsia-950/90 via-purple-950/90 to-[#1d0824] border-b border-fuchsia-500/30 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={onClose}
+              className="p-1.5 rounded-lg text-purple-200 hover:text-white hover:bg-white/10 transition-colors sm:hidden flex items-center gap-1 text-xs font-bold font-mono"
+            >
+              <span>← Back</span>
+            </button>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-2xl bg-fuchsia-500/20 border border-fuchsia-400/40 flex items-center justify-center text-fuchsia-300 shadow-md hidden sm:flex">
               <Database className="w-5 h-5 animate-pulse" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <h2 className="text-lg font-extrabold text-white font-display">
-                  Live Intelligence Dataset Ingestion
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <h2 className="text-xs sm:text-base font-extrabold text-white font-display">
+                  Live Intelligence Ingestion
                 </h2>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-fuchsia-500/20 text-fuchsia-200 border border-fuchsia-400/30 font-bold">
-                  REAL-TIME GRAPH SYNC
+                <span className="text-[9px] sm:text-[10px] font-mono px-1.5 sm:px-2 py-0.5 rounded bg-fuchsia-500/20 text-fuchsia-200 border border-fuchsia-400/30 font-bold">
+                  GRAPH SYNC
                 </span>
               </div>
-              <p className="text-xs text-purple-200">
-                Seamlessly ingest newly received forensic datasets, CDR logs, or suspect nodes directly into the active graph.
+              <p className="text-[10px] sm:text-xs text-purple-200 hidden sm:block">
+                Ingest newly received forensic datasets, CDR logs, or suspect nodes directly into the graph.
               </p>
             </div>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 text-purple-300 hover:text-white rounded-xl hover:bg-white/10 transition-colors cursor-pointer"
+            className="p-1.5 text-purple-300 hover:text-white rounded-xl hover:bg-white/10 transition-colors cursor-pointer hidden sm:block"
           >
             <X className="w-5 h-5" />
           </button>

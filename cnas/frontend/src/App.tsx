@@ -16,6 +16,8 @@ import { AIAssistant } from './pages/AIAssistant';
 import { CasesList } from './pages/CasesList';
 import { CaseDetail } from './pages/CaseDetail';
 
+import { MobileBottomNav } from './components/MobileBottomNav';
+
 const ProtectedLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { isAuthenticated } = useAuth();
   const location = useLocation();
@@ -33,12 +35,15 @@ const ProtectedLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
         <Navbar />
       </div>
 
-      <div className="flex-1 flex w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[136px] relative gap-6">
+      <div className="flex-1 flex w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-[136px] relative gap-6">
         <Sidebar />
-        <main className="flex-1 overflow-x-hidden min-w-0 pb-12">
+        <main className="flex-1 overflow-x-hidden min-w-0 pb-24 lg:pb-12">
           {children}
         </main>
       </div>
+
+      {/* Mobile Bottom Navigation Bar */}
+      <MobileBottomNav />
     </div>
   );
 };

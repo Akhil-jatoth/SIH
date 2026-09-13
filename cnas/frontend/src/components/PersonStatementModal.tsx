@@ -179,23 +179,29 @@ export const PersonStatementModal: React.FC<PersonStatementModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 pt-[144px] pb-6 sm:pt-[148px] bg-black/85 backdrop-blur-md overflow-y-auto official-print-modal print:p-0 print:m-0 print:static print:bg-white print:overflow-visible">
-      <div className="relative w-full max-w-4xl max-h-[calc(100vh-165px)] bg-slate-900 border border-sky-500/40 rounded-3xl shadow-2xl flex flex-col overflow-hidden text-slate-100 print:bg-white print:text-black print:border-none print:shadow-none print:max-h-none print:w-full print:rounded-none print:overflow-visible">
+    <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-6 sm:pt-[148px] bg-slate-950 sm:bg-black/85 sm:backdrop-blur-md overflow-y-auto official-print-modal print:p-0 print:m-0 print:static print:bg-white print:overflow-visible">
+      <div className="relative w-full h-full sm:h-auto sm:max-w-4xl sm:max-h-[calc(100vh-165px)] bg-slate-900 sm:border sm:border-sky-500/40 sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden text-slate-100 print:bg-white print:text-black print:border-none print:shadow-none print:max-h-none print:w-full print:rounded-none print:overflow-visible">
 
         {/* Control Header Toolbar (Non-printable) */}
-        <div className="flex flex-wrap items-center justify-between gap-3 px-6 py-4 bg-slate-950 border-b border-slate-800 print:hidden">
-          <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-sky-500/20 text-sky-400 border border-sky-500/30">
+        <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3.5 sm:py-4 bg-slate-950 border-b border-slate-800 print:hidden shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={onClose}
+              className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors sm:hidden flex items-center gap-1 text-xs font-bold font-mono"
+            >
+              <span>← Back</span>
+            </button>
+            <div className="p-2 rounded-xl bg-sky-500/20 text-sky-400 border border-sky-500/30 hidden sm:block">
               <Shield className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-sm font-bold text-white font-display flex items-center gap-2">
-                <span>Official Person Statement & Dossier</span>
+              <h2 className="text-xs sm:text-sm font-bold text-white font-display flex items-center gap-2">
+                <span>Official Person Statement</span>
                 <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">
                   {entity.name}
                 </span>
               </h2>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[10px] sm:text-[11px] text-slate-400 hidden sm:block">
                 Official Law Enforcement Record • Clear Telemetry, Hawala, CDR & Evidence Statement
               </p>
             </div>
@@ -205,37 +211,37 @@ export const PersonStatementModal: React.FC<PersonStatementModalProps> = ({
             {/* Download CSV */}
             <button
               onClick={handleDownloadCSV}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 shadow-sm transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 shadow-sm transition-all cursor-pointer"
               title="Download clean structured CSV for Excel / Sheets"
             >
               <FileSpreadsheet className="w-3.5 h-3.5" />
-              <span>Export CSV</span>
+              <span>CSV</span>
             </button>
 
             {/* Download JSON */}
             <button
               onClick={handleDownloadJSON}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-500/30 shadow-sm transition-all cursor-pointer"
+              className="hidden xs:flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold bg-purple-500/20 hover:bg-purple-500/30 text-purple-300 border border-purple-500/30 shadow-sm transition-all cursor-pointer"
               title="Download clean structured JSON dataset"
             >
               <FileCode className="w-3.5 h-3.5" />
-              <span>Export JSON</span>
+              <span>JSON</span>
             </button>
 
             {/* Print / Save PDF */}
             <button
               onClick={handlePrint}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold bg-sky-500 hover:bg-sky-400 text-slate-950 shadow-md transition-all cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold bg-sky-500 hover:bg-sky-400 text-slate-950 shadow-md transition-all cursor-pointer"
               title="Print or Save as Official PDF Document"
             >
               <Printer className="w-4 h-4" />
-              <span>Print / Save PDF</span>
+              <span>Print / PDF</span>
             </button>
 
             {/* Close */}
             <button
               onClick={onClose}
-              className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer"
+              className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition-colors cursor-pointer hidden sm:block"
             >
               <X className="w-5 h-5" />
             </button>

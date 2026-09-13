@@ -27,34 +27,40 @@ export const AuditLogModal: React.FC<AuditLogModalProps> = ({ isOpen, onClose })
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 pt-[144px] pb-6 sm:pt-[148px] bg-black/75 backdrop-blur-md">
+      <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-4 sm:pt-[148px] bg-[#0c131f] sm:bg-black/75 sm:backdrop-blur-md overflow-y-auto">
         <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
+          initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.96 }}
-          className="w-full max-w-3xl max-h-[calc(100vh-165px)] flex flex-col rounded-2xl bg-[#0c131f] border border-blue-500/40 shadow-glowBlue overflow-hidden"
+          exit={{ opacity: 0, scale: 0.98 }}
+          className="w-full h-full sm:h-auto sm:max-w-3xl sm:max-h-[calc(100vh-165px)] flex flex-col sm:rounded-2xl bg-[#0c131f] sm:border sm:border-blue-500/40 shadow-glowBlue overflow-hidden"
         >
           {/* Header */}
-          <div className="p-5 border-b border-white/10 flex items-center justify-between bg-gradient-to-r from-blue-950/40 to-slate-900/40">
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-xl bg-blue-500/20 border border-blue-500/40 text-blue-400 shadow-sm">
-                <ShieldCheck className="w-6 h-6" />
+          <div className="p-3.5 sm:p-5 border-b border-white/10 flex items-center justify-between bg-gradient-to-r from-blue-950/40 to-slate-900/40 shrink-0">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <button
+                onClick={onClose}
+                className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors sm:hidden flex items-center gap-1 text-xs font-bold font-mono"
+              >
+                <span>← Back</span>
+              </button>
+              <div className="p-2 sm:p-2.5 rounded-xl bg-blue-500/20 border border-blue-500/40 text-blue-400 shadow-sm hidden sm:block">
+                <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div>
-                <h3 className="text-base font-bold text-slate-100 flex items-center gap-2">
-                  Cryptographic Chain-of-Custody Ledger
-                  <span className="text-[10px] font-mono font-semibold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
-                    VERIFIED TAMPER-PROOF
+                <h3 className="text-xs sm:text-base font-bold text-slate-100 flex items-center gap-2">
+                  <span>Cryptographic Evidence Ledger</span>
+                  <span className="text-[9px] sm:text-[10px] font-mono font-semibold px-1.5 sm:px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40">
+                    VERIFIED
                   </span>
                 </h3>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  SIH Cybersecurity & Blockchain Module: SHA-256 immutable intelligence action audit trails
+                <p className="text-[10px] sm:text-xs text-slate-400 mt-0.5 hidden sm:block">
+                  SHA-256 immutable intelligence action audit trails
                 </p>
               </div>
             </div>
             <button
               onClick={onClose}
-              className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+              className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-white/10 transition-colors cursor-pointer hidden sm:block"
             >
               <X className="w-5 h-5" />
             </button>
