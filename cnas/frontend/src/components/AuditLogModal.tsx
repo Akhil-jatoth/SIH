@@ -27,12 +27,12 @@ export const AuditLogModal: React.FC<AuditLogModalProps> = ({ isOpen, onClose })
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md">
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 pt-[144px] pb-6 sm:pt-[148px] bg-black/75 backdrop-blur-md">
         <motion.div
           initial={{ opacity: 0, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.96 }}
-          className="w-full max-w-3xl max-h-[85vh] flex flex-col rounded-2xl bg-[#0c131f] border border-blue-500/40 shadow-glowBlue overflow-hidden"
+          className="w-full max-w-3xl max-h-[calc(100vh-165px)] flex flex-col rounded-2xl bg-[#0c131f] border border-blue-500/40 shadow-glowBlue overflow-hidden"
         >
           {/* Header */}
           <div className="p-5 border-b border-white/10 flex items-center justify-between bg-gradient-to-r from-blue-950/40 to-slate-900/40">

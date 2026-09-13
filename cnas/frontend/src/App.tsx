@@ -6,6 +6,8 @@ import { OfficialHeaderBar } from './components/OfficialHeaderBar';
 import { Navbar } from './components/Navbar';
 import { Sidebar } from './components/Sidebar';
 
+import { ScrollToTop } from './components/ScrollToTop';
+
 import { Login } from './pages/Login';
 import { Dashboard } from './pages/Dashboard';
 import { GraphExplorer } from './pages/GraphExplorer';
@@ -25,12 +27,15 @@ const ProtectedLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
   return (
     <div className="min-h-screen flex flex-col bg-[#080c14] text-slate-100 relative">
       <CyberBackground />
-      <OfficialHeaderBar />
-      <Navbar />
+      {/* Permanently Fixed Top Header Container */}
+      <div className="fixed top-0 left-0 right-0 z-40 w-full flex flex-col bg-slate-950/95 backdrop-blur-2xl shadow-2xl">
+        <OfficialHeaderBar />
+        <Navbar />
+      </div>
 
-      <div className="flex-1 flex w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 relative z-10 gap-6">
+      <div className="flex-1 flex w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[136px] relative gap-6">
         <Sidebar />
-        <main className="flex-1 overflow-x-hidden min-w-0">
+        <main className="flex-1 overflow-x-hidden min-w-0 pb-12">
           {children}
         </main>
       </div>
@@ -42,6 +47,7 @@ export const App: React.FC = () => {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           {/* Public Login */}
           <Route path="/login" element={<Login />} />

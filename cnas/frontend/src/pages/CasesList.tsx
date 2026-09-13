@@ -65,26 +65,26 @@ export const CasesList: React.FC = () => {
       {/* Search & Filter */}
       <div className="flex flex-col sm:flex-row items-center gap-3">
         <div className="relative flex-1 w-full">
-          <Search className="absolute left-3.5 top-3 w-4 h-4 text-white/60" />
+          <Search className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by case title or keywords..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#2e0c32]/80 border border-white/20 text-white placeholder:text-white/50 text-xs font-medium focus:outline-none focus:border-violet-300 shadow-ops backdrop-blur-md"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-white placeholder:text-slate-500 text-xs font-medium focus:outline-none focus:border-sky-400 shadow-ops backdrop-blur-md"
           />
         </div>
 
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-3.5 py-2.5 rounded-xl bg-[#2e0c32]/80 border border-white/20 text-white text-xs font-semibold focus:outline-none shadow-ops w-full sm:w-auto cursor-pointer backdrop-blur-md"
+          className="px-3.5 py-2.5 rounded-xl bg-slate-900/80 border border-slate-800 text-white text-xs font-semibold focus:outline-none shadow-ops w-full sm:w-auto cursor-pointer backdrop-blur-md"
         >
-          <option value="ALL" className="bg-[#2e0c32] text-white">All Statuses</option>
-          <option value="Active" className="bg-[#2e0c32] text-white">Active</option>
-          <option value="Critical" className="bg-[#2e0c32] text-white">Critical</option>
-          <option value="Under Review" className="bg-[#2e0c32] text-white">Under Review</option>
-          <option value="Closed" className="bg-[#2e0c32] text-white">Closed</option>
+          <option value="ALL" className="bg-slate-900 text-white">All Statuses</option>
+          <option value="Active" className="bg-slate-900 text-white">Active</option>
+          <option value="Critical" className="bg-slate-900 text-white">Critical</option>
+          <option value="Under Review" className="bg-slate-900 text-white">Under Review</option>
+          <option value="Closed" className="bg-slate-900 text-white">Closed</option>
         </select>
       </div>
 

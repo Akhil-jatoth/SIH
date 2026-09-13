@@ -4,39 +4,39 @@
 
 @layer base {
   body {
-    background-color: #A952B9;
-    background-image: 
-      radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
-      radial-gradient(circle at 85% 85%, rgba(52, 16, 56, 0.45) 0%, transparent 45%),
-      radial-gradient(circle at 50% 50%, rgba(146, 59, 159, 0.3) 0%, transparent 50%);
+    background-color: #080c14;
+    background-image:
+      radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.07) 0%, transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(15, 23, 42, 0.7) 0%, transparent 50%);
     background-attachment: fixed;
     min-height: 100vh;
-    color: #ffffff;
+    color: #f8fafc;
   }
 }
 
-/* Frosted Glass Panels on #A952B9 */
+/* Frosted Glass Panels on Dark Theme */
 .glass-panel {
-  background: rgba(46, 12, 50, 0.72);
+  background: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  box-shadow: 0 10px 36px 0 rgba(35, 5, 38, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: 0 10px 36px 0 rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glass-panel-hover:hover {
-  background: rgba(56, 15, 61, 0.85);
-  border-color: rgba(255, 255, 255, 0.35);
-  box-shadow: 0 14px 40px 0 rgba(35, 5, 38, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 14px 40px 0 rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   transform: translateY(-2px);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
 }
 
@@ -62,27 +62,27 @@
 }
 
 .glow-purple:hover {
-  border-color: #e879f9;
-  box-shadow: 0 0 25px -3px rgba(232, 121, 249, 0.5);
+  border-color: #a855f7;
+  box-shadow: 0 0 25px -3px rgba(168, 85, 247, 0.5);
 }
 
-/* Custom Purple Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(46, 12, 50, 0.6);
+  background: rgba(15, 23, 42, 0.6);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 /* Leaflet Customizations on dark theme */
@@ -112,8 +112,116 @@
 /* Subtle Grid */
 .cyber-grid {
   background-size: 36px 36px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
+/* =========================================================
+   OFFICIAL LAW-ENFORCEMENT DOSSIER PRINT STYLES
+   ========================================================= */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm 10mm;
+  }
+
+  /* Force exact color reproduction and high contrast for printing */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    min-height: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    font-size: 9.5pt !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Completely hide all extraneous web app UI */
+  .print\:hidden,
+  nav,
+  aside,
+  header,
+  .cyber-grid,
+  .fixed.top-0,
+  .fixed.inset-0.pointer-events-none,
+  button {
+    display: none !important;
+  }
+
+  /* Hide normal background page elements */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Reveal only the official print modal and all its sub-elements */
+  .official-print-modal,
+  .official-print-modal * {
+    visibility: visible !important;
+  }
+
+  /* Enforce black text and transparent background on print items */
+  .official-print-modal * {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+
+  /* Modal backdrop takes full print page area */
+  .official-print-modal {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    overflow: visible !important;
+    display: block !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Inner card container expands naturally to fit full page */
+  .official-print-modal>div {
+    position: static !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Table borders in crisp high contrast */
+  .official-print-modal table,
+  .official-print-modal th,
+  .official-print-modal td {
+    border-color: #666666 !important;
+  }
+
+  /* Avoid unwanted page splits inside cohesive dossier sections */
+  .print-avoid-break {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}

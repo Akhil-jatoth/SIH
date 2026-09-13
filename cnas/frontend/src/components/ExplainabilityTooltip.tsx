@@ -48,10 +48,10 @@ export const ExplainabilityTooltip: React.FC<ExplainabilityTooltipProps> = ({
               exit={{ opacity: 0, scale: 0.96, y: -4 }}
               transition={{ duration: 0.18 }}
               onClick={(e) => e.stopPropagation()}
-              className="absolute z-50 right-0 mt-2 w-72 sm:w-84 p-4 rounded-2xl bg-[#2d0932] border border-white/30 shadow-2xl text-slate-100"
+              className="absolute z-50 right-0 mt-2 w-72 sm:w-84 p-4 rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl text-slate-100"
             >
-              <div className="flex items-start justify-between gap-2 mb-2 pb-2.5 border-b border-white/15">
-                <div className="flex items-center gap-1.5 text-fuchsia-300">
+              <div className="flex items-start justify-between gap-2 mb-2 pb-2.5 border-b border-slate-800">
+                <div className="flex items-center gap-1.5 text-sky-400">
                   <Sparkles className="w-4 h-4" />
                   <h4 className="text-xs font-bold uppercase tracking-wider text-white">
                     {title}
@@ -60,7 +60,7 @@ export const ExplainabilityTooltip: React.FC<ExplainabilityTooltipProps> = ({
                 <button
                   type="button"
                   onClick={() => setIsOpen(false)}
-                  className="text-purple-300 hover:text-white p-0.5 rounded hover:bg-white/10 cursor-pointer"
+                  className="text-slate-400 hover:text-white p-0.5 rounded hover:bg-white/10 cursor-pointer"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -72,11 +72,11 @@ export const ExplainabilityTooltip: React.FC<ExplainabilityTooltipProps> = ({
                 </div>
               )}
 
-              <p className="text-xs text-purple-100 leading-relaxed font-normal">
+              <p className="text-xs text-slate-300 leading-relaxed font-normal">
                 {reason}
               </p>
 
-              <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center gap-2 text-[10px] text-purple-200 font-medium">
+              <div className="mt-3 pt-2.5 border-t border-slate-800 flex items-center gap-2 text-[10px] text-slate-400 font-medium">
                 <ShieldAlert className="w-3.5 h-3.5 text-amber-300 flex-shrink-0" />
                 <span>Requires human investigative verification prior to evidence submission.</span>
               </div>

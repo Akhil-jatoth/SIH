@@ -176,17 +176,17 @@ export const AIAssistant: React.FC = () => {
                   <div
                     className={`p-4 rounded-2xl text-xs leading-relaxed ${
                       isUser
-                        ? 'bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white rounded-br-none shadow-glowViolet font-normal border border-violet-400/30'
-                        : 'glass-panel bg-[#280a2d]/90 border border-white/15 text-slate-100 rounded-bl-none font-normal shadow-ops backdrop-blur-md'
+                        ? 'bg-gradient-to-r from-sky-600 to-blue-600 text-white rounded-br-none shadow-md font-normal border border-sky-400/30'
+                        : 'glass-panel bg-slate-900/90 border border-slate-800 text-slate-100 rounded-bl-none font-normal shadow-ops backdrop-blur-md'
                     }`}
                   >
                     <div className="whitespace-pre-wrap">{m.text}</div>
 
                     {/* Render Clickable Entity Chips */}
                     {m.suggestedEntities && m.suggestedEntities.length > 0 && (
-                      <div className="mt-3 pt-3 border-t border-white/10">
-                        <div className="text-[10px] font-mono text-violet-300 uppercase tracking-wider mb-1.5 flex items-center gap-1 font-bold">
-                          <Network className="w-3 h-3 text-violet-300" />
+                      <div className="mt-3 pt-3 border-t border-slate-800">
+                        <div className="text-[10px] font-mono text-sky-400 uppercase tracking-wider mb-1.5 flex items-center gap-1 font-bold">
+                          <Network className="w-3 h-3 text-sky-400" />
                           <span>Graph Quick-Links:</span>
                         </div>
                         <div className="flex flex-wrap gap-1.5">
@@ -197,7 +197,7 @@ export const AIAssistant: React.FC = () => {
                               <button
                                 key={entId}
                                 onClick={() => navigate(`/graph?highlight=${entId}`)}
-                                className="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-lg bg-violet-500/20 hover:bg-violet-500/35 text-violet-200 border border-violet-400/40 transition-all cursor-pointer shadow-xs"
+                                className="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-lg bg-sky-500/20 hover:bg-sky-500/35 text-sky-200 border border-sky-400/40 transition-all cursor-pointer shadow-xs"
                               >
                                 <span>{label}</span>
                                 <ChevronRight className="w-3 h-3" />
@@ -210,13 +210,13 @@ export const AIAssistant: React.FC = () => {
                   </div>
 
                   {/* Timestamp */}
-                  <span className="text-[10px] text-white/60 mt-1 font-mono px-1">
+                  <span className="text-[10px] text-slate-400 mt-1 font-mono px-1">
                     {m.timestamp}
                   </span>
                 </div>
 
                 {isUser && (
-                  <div className="w-8 h-8 rounded-xl bg-fuchsia-600/30 border border-fuchsia-400/40 flex items-center justify-center text-fuchsia-200 flex-shrink-0 mt-0.5">
+                  <div className="w-8 h-8 rounded-xl bg-sky-600/30 border border-sky-400/40 flex items-center justify-center text-sky-200 flex-shrink-0 mt-0.5">
                     <User className="w-4 h-4" />
                   </div>
                 )}
@@ -231,11 +231,11 @@ export const AIAssistant: React.FC = () => {
               animate={{ opacity: 1 }}
               className="flex items-center gap-3"
             >
-              <div className="w-8 h-8 rounded-xl bg-violet-500/20 border border-violet-400/40 flex items-center justify-center text-violet-200">
+              <div className="w-8 h-8 rounded-xl bg-sky-500/20 border border-sky-400/40 flex items-center justify-center text-sky-200">
                 <Bot className="w-4 h-4 animate-spin" />
               </div>
-              <div className="p-3.5 rounded-2xl bg-[#280a2d]/90 border border-white/15 text-xs text-violet-200 flex items-center gap-2 font-medium">
-                <span className="w-2 h-2 rounded-full bg-violet-400 animate-ping" />
+              <div className="p-3.5 rounded-2xl bg-slate-900/90 border border-slate-800 text-xs text-sky-200 flex items-center gap-2 font-medium">
+                <span className="w-2 h-2 rounded-full bg-sky-400 animate-ping" />
                 <span className="font-mono">Analyzing knowledge graph topology...</span>
               </div>
             </motion.div>
@@ -245,10 +245,10 @@ export const AIAssistant: React.FC = () => {
         </div>
 
         {/* Input & Example Chips */}
-        <div className="pt-3 border-t border-white/10 mt-3">
+        <div className="pt-3 border-t border-slate-800 mt-3">
           {/* Example Question Chips */}
           <div className="flex flex-wrap gap-1.5 mb-3">
-            <span className="text-[10px] text-white/70 font-mono font-bold self-center mr-1">
+            <span className="text-[10px] text-slate-400 font-mono font-bold self-center mr-1">
               Sample queries:
             </span>
             {exampleQuestions.map((q) => (
@@ -256,7 +256,7 @@ export const AIAssistant: React.FC = () => {
                 key={q}
                 onClick={() => handleSend(q)}
                 disabled={loading}
-                className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/15 transition-colors cursor-pointer backdrop-blur-sm"
+                className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors cursor-pointer backdrop-blur-sm"
               >
                 {q}
               </button>
@@ -276,7 +276,7 @@ export const AIAssistant: React.FC = () => {
               value={inputQuery}
               onChange={(e) => setInputQuery(e.target.value)}
               placeholder="Ask about connections, kingpins, paths, or anomalies (e.g., 'Who is connected to Rahul Verma?')..."
-              className="flex-1 px-4 py-3 rounded-xl bg-[#1e0722]/80 border border-white/20 text-white text-xs font-medium focus:outline-none focus:border-violet-400 focus:ring-1 focus:ring-violet-400 placeholder:text-white/40 backdrop-blur-md"
+              className="flex-1 px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-800 text-white text-xs font-medium focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400 placeholder:text-slate-500 backdrop-blur-md"
               disabled={loading}
             />
 

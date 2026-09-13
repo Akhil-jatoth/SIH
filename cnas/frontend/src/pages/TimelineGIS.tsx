@@ -12,6 +12,9 @@ import {
   Layers,
   Crosshair,
   ShieldAlert,
+  Search,
+  Phone,
+  Sparkles
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { GlassPanel } from '../components/GlassPanel';
@@ -150,6 +153,97 @@ export const TimelineGIS: React.FC = () => {
     return Array.from(map.entries());
   }, [events]);
 
+  // Direct Number Live Search state (works for ANY number inside or outside dataset)
+  const [directNumberQuery, setDirectNumberQuery] = useState('');
+  const [directSearching, setDirectSearching] = useState(false);
+  const [locatingDevice, setLocatingDevice] = useState(false);
+
+  // Direct Live Locator function
+  const handleSearchDirectNumber = async (qText?: string) => {
+    const q = (qText !== undefined ? qText : directNumberQuery).trim();
+    if (!q) return;
+    try {
+      setDirectSearching(true);
+      const res = await api.searchSuspectOrPhone(q);
+      if (res.found && res.latest_location) {
+        const pin = res.latest_location.pincode ? ` [PINCODE: ${res.latest_location.pincode}]` : '';
+        const name = res.person_name || res.target?.person_name || res.target?.name || q;
+        const desc = `${res.latest_location.description || 'Live Carrier Intercept'}${pin}`;
+
+        setSearchParams({
+          lat: String(res.latest_location.latitude),
+          lng: String(res.latest_location.longitude),
+          name: name,
+          desc: desc,
+          time: res.latest_location.timestamp || 'LIVE CURRENT PING',
+          case: `LIVE CARRIER PING — PIN: ${res.latest_location.pincode || 'RESOLVED'}`,
+          isolate: 'true'
+        });
+        setMapCenter([res.latest_location.latitude, res.latest_location.longitude]);
+      } else {
+        alert(res.message || 'Could not locate phone number coordinates.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Failed to triangulate carrier location for this number.');
+    } finally {
+      setDirectSearching(false);
+    }
+  };
+
+  // Real Hardware Device GPS Probe (accurately finds the user's exact current physical location & pincode)
+  const handleUseCurrentDeviceLocation = () => {
+    if (!navigator.geolocation) {
+      alert('Geolocation is not supported by your browser.');
+      return;
+    }
+    setLocatingDevice(true);
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const lat = pos.coords.latitude;
+        const lng = pos.coords.longitude;
+        let area = 'Current Device Location';
+        let pincode = '';
+
+        try {
+          const geoRes = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`);
+          if (geoRes.ok) {
+            const data = await geoRes.json();
+            pincode = data.address?.postcode || '';
+            const road = data.address?.road || data.address?.suburb || data.address?.neighbourhood || '';
+            const city = data.address?.city || data.address?.town || data.address?.state_district || '';
+            const state = data.address?.state || '';
+            area = road ? `${road}, ${city || state}` : `${city || state || 'Live Physical Device'}`;
+          }
+        } catch (e) {
+          console.warn('Reverse geocode failed:', e);
+        }
+
+        const numLabel = directNumberQuery.trim() ? directNumberQuery.trim() : 'Active User Device';
+        const pinStr = pincode ? ` — PINCODE: ${pincode}` : '';
+        const finalDesc = `${area}${pinStr} (Live Device Hardware GPS Probe)`;
+
+        setSearchParams({
+          lat: String(lat),
+          lng: String(lng),
+          name: `📍 REAL DEVICE: ${numLabel}`,
+          desc: finalDesc,
+          time: new Date().toLocaleTimeString() + ' (EXACT DEVICE GPS FIX)',
+          case: `EXACT DEVICE HARDWARE GPS — ${pincode ? `PIN: ${pincode}` : 'LIVE FIX'}`,
+          isolate: 'true'
+        });
+        setMapCenter([lat, lng]);
+        setLocatingDevice(false);
+      },
+      (err) => {
+        console.error(err);
+        setLocatingDevice(false);
+        alert('Could not obtain device GPS. Please grant location permissions in your browser or type a phone number.');
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    );
+  };
+
   const handleSelectEvent = (ev: TimelineEvent) => {
     setSelectedEventId(ev.id);
     setMapCenter([ev.latitude, ev.longitude]);
@@ -167,6 +261,90 @@ export const TimelineGIS: React.FC = () => {
     <div className="space-y-4 pb-12">
       {/* Top Banner */}
       <HumanInTheLoopBanner />
+
+      {/* Real-time Phone Number & Suspect Tracker Bar (Locates ANY Outside Number on Map) */}
+      <div className="p-3.5 rounded-2xl bg-slate-900/90 border border-sky-500/40 shadow-xl backdrop-blur-md">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSearchDirectNumber();
+          }}
+          className="flex flex-col sm:flex-row items-center gap-2"
+        >
+          <div className="relative flex-1 w-full">
+            <Search className="w-4 h-4 text-sky-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              value={directNumberQuery}
+              onChange={(e) => setDirectNumberQuery(e.target.value)}
+              placeholder="Enter ANY Mobile Number (e.g. your 10-digit number) or tap 'Pin My Device'..."
+              className="w-full bg-slate-950 border border-slate-700 rounded-xl pl-10 pr-4 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-sky-400 font-mono shadow-inner"
+            />
+          </div>
+
+          <button
+            type="submit"
+            disabled={directSearching || !directNumberQuery.trim()}
+            className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-sky-600 hover:from-emerald-400 hover:to-sky-500 disabled:opacity-50 text-white text-xs font-bold shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0"
+          >
+            {directSearching ? (
+              <>
+                <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                <span>Triangulating...</span>
+              </>
+            ) : (
+              <>
+                <Radio className="w-4 h-4 text-emerald-300" />
+                <span>Locate on Map</span>
+              </>
+            )}
+          </button>
+
+          <button
+            type="button"
+            onClick={handleUseCurrentDeviceLocation}
+            disabled={locatingDevice}
+            className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-orange-600 hover:from-amber-400 hover:to-orange-500 disabled:opacity-50 text-white text-xs font-bold shadow-md transition-all cursor-pointer flex items-center justify-center gap-2 shrink-0"
+            title="Use your actual device browser GPS to pinpoint your exact current location and real PINCODE on the map"
+          >
+            {locatingDevice ? (
+              <>
+                <div className="w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                <span>Reading GPS...</span>
+              </>
+            ) : (
+              <>
+                <MapPin className="w-4 h-4 text-white animate-bounce" />
+                <span>📍 Pin My Exact Location (GPS)</span>
+              </>
+            )}
+          </button>
+        </form>
+
+        {/* Quick Suggestion Chips */}
+        <div className="flex items-center gap-2 mt-2.5 text-[11px] font-mono text-slate-400 flex-wrap">
+          <span className="text-slate-500">Quick Test (Outside & Inside Dataset):</span>
+          {[
+            { label: 'Outside: 9848012345 (AP/TS)', q: '9848012345' },
+            { label: 'Outside: 9811099887 (Delhi)', q: '9811099887' },
+            { label: 'Outside: 9820033221 (Mumbai)', q: '9820033221' },
+            { label: 'Outside: 9845011223 (Bengaluru)', q: '9845011223' },
+            { label: 'Dataset: 9811011223 (Kabir Khan)', q: '9811011223' },
+          ].map((chip) => (
+            <button
+              key={chip.q}
+              type="button"
+              onClick={() => {
+                setDirectNumberQuery(chip.q);
+                handleSearchDirectNumber(chip.q);
+              }}
+              className="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-sky-300 border border-slate-700 text-[10px] cursor-pointer transition-colors"
+            >
+              {chip.label}
+            </button>
+          ))}
+        </div>
+      </div>
 
       {/* Target Isolation Notice Bar (when Tracking a Specific Suspect / Phone Number) */}
       {liveTargetEvent && (
@@ -232,7 +410,7 @@ export const TimelineGIS: React.FC = () => {
               {isIsolatedMode ? 'TARGET ISOLATION' : 'SYNCHRONIZED FEED'}
             </span>
           </h1>
-          <p className="text-xs text-purple-200 mt-1 font-medium">
+          <p className="text-xs text-slate-400 mt-1 font-medium">
             {isIsolatedMode
               ? `Displaying precise GPS telemetry and cell tower triangulation intercept strictly for ${liveTargetEvent?.entity_name}.`
               : 'Correlating physical surveillance intercepts, wire handoffs, and satellite telemetry across India corridors.'}
@@ -242,16 +420,16 @@ export const TimelineGIS: React.FC = () => {
         {/* Case Selector Filter (Only active in Full Network mode) */}
         {!isIsolatedMode && (
           <div className="flex items-center gap-3">
-            <div className="flex items-center gap-2 bg-[#341038] px-3 py-2 rounded-xl border border-white/20 text-xs shadow-lg">
-              <Filter className="w-3.5 h-3.5 text-purple-300" />
+            <div className="flex items-center gap-2 bg-slate-900 px-3 py-2 rounded-xl border border-slate-800 text-xs shadow-lg">
+              <Filter className="w-3.5 h-3.5 text-sky-400" />
               <select
                 value={selectedCaseId}
                 onChange={(e) => setSelectedCaseId(e.target.value)}
                 className="bg-transparent text-white focus:outline-none text-xs font-semibold cursor-pointer"
               >
-                <option value="ALL" className="bg-[#2d0932]">All Operations ({uniqueCases.length})</option>
+                <option value="ALL" className="bg-slate-900">All Operations ({uniqueCases.length})</option>
                 {uniqueCases.map(([id, title]) => (
-                  <option key={id} value={String(id)} className="bg-[#2d0932]">
+                  <option key={id} value={String(id)} className="bg-slate-900">
                     Case #{id}: {title}
                   </option>
                 ))}
@@ -476,7 +654,7 @@ export const TimelineGIS: React.FC = () => {
             </MapContainer>
 
             {/* Map Floating HUD */}
-            <div className="absolute top-4 right-4 z-[400] p-2.5 rounded-xl bg-[#280c2c]/90 border border-white/20 shadow-2xl text-xs text-white flex items-center gap-2 font-semibold backdrop-blur-md">
+            <div className="absolute top-4 right-4 z-[400] p-2.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-2xl text-xs text-white flex items-center gap-2 font-semibold backdrop-blur-md">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping" />
               <span className="font-mono text-[11px]">
                 {isIsolatedMode ? `1 Target Isolated (${queryName || 'Suspect'})` : `${displayedEvents.length} Active Geo Pins`}

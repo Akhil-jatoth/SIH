@@ -41,7 +41,7 @@ export const OfficialHeaderBar: React.FC = () => {
         {/* Left: Official Government & Agency Classification */}
         <div className="flex items-center gap-2.5">
           <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/40 text-amber-400 font-bold tracking-wider">
-            <Shield className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+            <Shield className="w-3.5 h-3.5 text-amber-400" />
             <span>CBI // NATGRID</span>
           </div>
 
@@ -56,7 +56,7 @@ export const OfficialHeaderBar: React.FC = () => {
 
         {/* Center: Live Threat Defcon */}
         <div className="hidden lg:flex items-center gap-2 px-2.5 py-0.5 rounded bg-rose-950/40 border border-rose-500/30 text-rose-300 text-[10px]">
-          <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping" />
+          <span className="w-2 h-2 rounded-full bg-rose-500" />
           <span className="font-bold tracking-wider">THREAT LEVEL: DEFCON-3 (ELEVATED)</span>
           <span className="text-slate-500">|</span>
           <span className="text-slate-400">CLEARANCE: {user?.clearanceLevel || 'LEVEL-V TOP SECRET'}</span>
@@ -65,7 +65,7 @@ export const OfficialHeaderBar: React.FC = () => {
         {/* Right: Live IST/UTC Radar Clock & Badge */}
         <div className="flex items-center gap-3 ml-auto">
           <div className="flex items-center gap-1.5 text-sky-400 bg-sky-950/40 border border-sky-500/30 px-2 py-0.5 rounded">
-            <Radio className="w-3 h-3 text-sky-400 animate-pulse" />
+            <Radio className="w-3.5 h-3.5 text-sky-400" />
             <span className="font-semibold">{timeState.ist || '00:00:00 IST'}</span>
             <span className="text-slate-500 hidden sm:inline">({timeState.utc})</span>
           </div>

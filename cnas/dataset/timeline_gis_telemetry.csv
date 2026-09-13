@@ -1,41 +1,41 @@
-event_id,entity_id,entity_name,entity_type,case_id,case_title,latitude,longitude,timestamp,location_telemetry_description
-1,1,Kabir Khan,Person,1,Operation Iron Grid,28.6562,77.241,2024-09-12 14:30:00,Encrypted satellite ping intercepted near Old Delhi safehouse.
-9,15,Rahul Verma,Person,2,Case #2024-ND-89: Hawala Matrix,18.95,72.83,2024-09-15 18:00:00,Hawala cash courier collection reported in Zaveri Bazaar.
-17,29,Arjun Mehta,Person,3,The Bengaluru Crypto Heist,12.9784,77.6408,2024-09-20 03:22:00,Malicious transaction relay deployed from Indiranagar node.
-25,43,Ananya Das,Person,10,Operation Silver Line,22.553,88.351,2024-09-25 12:00:00,"Counterfeit consignment documents notarized in Park Street, Kolkata."
-2,2,Vikram Malhotra,Person,2,Case #2024-ND-89: Hawala Matrix,28.6315,77.2167,2024-09-28 11:15:00,Wire transfer of ₹1.8 Cr initiated from Connaught Place branch.
-10,17,Fatima Zaidi,Person,2,Case #2024-ND-89: Hawala Matrix,19.06,72.86,2024-10-02 14:00:00,Offshore telegraphic transfer authorization signed at BKC complex.
-3,5,DL-01-AB-9988 (Toyota Fortuner),Vehicle,4,Operation Falcon Wing,28.3842,76.974,2024-10-04 22:45:00,"Toll plaza scan at Kherki Daula Toll, NH-48 heading to Jaipur."
-18,30,Priya Sharma,Person,3,The Bengaluru Crypto Heist,12.9352,77.6245,2024-10-08 13:45:00,Crypto tumbler split transaction routed through Monero pool.
-26,44,Subhash Roy,Person,10,Operation Silver Line,23.08,88.87,2024-10-15 05:00:00,Border cargo dispatch organized at Petrapole border post.
-4,3,Pooja Singhal,Person,4,Operation Falcon Wing,28.3512,76.9428,2024-10-18 16:20:00,Meeting documented at Manesar logistics warehouse terminal.
-11,16,Sameer Merchant,Person,6,Operation Dark Port,18.9498,72.951,2024-10-22 08:30:00,Customs container release clearance forged at Nhava Sheva Port.
-19,31,Karthik Reddy,Person,8,Case #2025-HYD-55: Tech Park Extortion,17.4474,78.3762,2024-10-25 18:10:00,VoIP spoof server activated in HITEC City data rack.
-31,60,Sunil 'Bhai' Deshmukh,Person,15,Operation Shadow Hawk,26.9124,75.7873,2024-10-30 21:00:00,Secret summit detected at heritage luxury resort in Jaipur.
-5,4,Tariq Sheikh,Person,9,Project Nightfall,28.6562,77.241,2024-11-01 09:40:00,Physical surveillance confirmed suspect presence near Red Fort corridor.
-20,33,TS-09-FA-8899 (Tesla Model 3),Vehicle,8,Case #2025-HYD-55: Tech Park Extortion,17.4401,78.3489,2024-11-05 21:00:00,Fastag toll capture at Outer Ring Road Gachibowli junction.
-27,45,Bikramjit Sen,Person,6,Operation Dark Port,22.56,88.31,2024-11-08 17:30:00,"River barge departure logged at Shalimar Yard, Howrah."
-12,18,MH-02-CD-7744 (Mercedes E-Class),Vehicle,2,Case #2024-ND-89: Hawala Matrix,19.0368,72.8172,2024-11-10 20:50:00,Automatic Number Plate Recognition hit on Bandra-Worli Sea Link.
-6,13,Rohit Rawat,Person,4,Operation Falcon Wing,28.49,77.08,2024-11-15 19:10:00,Vehicle handoff intercepted by highway patrol near Gurugram cyber hub.
-21,42,Naveen Iyer,Person,7,The Cyber Syndicate V3,17.4474,78.3762,2024-11-22 04:50:00,Intrusion log generated on AWS Mumbai region targeting payment gateway.
-28,47,WB-19-TR-7821 (Ashok Leyland Cargo),Vehicle,10,Operation Silver Line,22.68,88.29,2024-11-27 14:20:00,Cargo weighbridge log at Dankuni toll corridor.
-13,28,Farhan Qureshi,Person,6,Operation Dark Port,18.9498,72.951,2024-11-29 01:10:00,Cargo shift detected at JNPT container yard under false manifest.
-7,1,Kabir Khan,Person,11,Case #2025-DL-302: Red Fort Espionage,28.68,77.22,2024-12-01 02:15:00,"High-frequency radio transmitter activated in Civil Lines, Delhi."
-32,60,Sunil 'Bhai' Deshmukh,Person,15,Operation Shadow Hawk,19.0896,72.8656,2024-12-05 16:30:00,Private charter flight logged from Mumbai to Delhi.
-14,26,Verma Diamond Exports Pvt Ltd,Organization,2,Case #2024-ND-89: Hawala Matrix,18.952,72.832,2024-12-14 11:30:00,Bulk consignment of industrial rough diamonds cleared without GST.
-22,40,NovaCore Cybersecurity Labs,Organization,3,The Bengaluru Crypto Heist,12.9784,77.6408,2024-12-19 10:00:00,Subpoena served regarding illicit VPN tunnel exit node.
-29,53,Eastern Silk & Logistics Hub,Organization,10,Operation Silver Line,22.56,88.31,2024-12-22 11:00:00,Customs search warrant executed; undeclared electronics seized.
-33,56,Hawala Clearing House Alpha,Organization,2,Case #2024-ND-89: Hawala Matrix,28.6139,77.209,2024-12-28 23:59:00,Bulk reconciliation ledger synchronized between Delhi & Mumbai cells.
-23,29,Arjun Mehta,Person,13,Case #2024-BLR-401: Cloud Breach,12.9716,77.5946,2025-01-03 15:30:00,Decrypted laptop image retrieved containing 400 private keys.
-8,11,Old Delhi Safehouse #4,Location,1,Operation Iron Grid,28.6562,77.241,2025-01-08 04:30:00,Raid executed; seizure of 14 burner SIM cards and ledgers.
-34,57,DarkPool Mixer Node #9,Organization,3,The Bengaluru Crypto Heist,12.9716,77.5946,2025-01-10 03:00:00,High-volume $2.1M USDT bridge swap completed via decentralized pool.
-15,15,Rahul Verma,Person,12,Operation Golden Route,23.0225,72.5714,2025-01-12 17:00:00,High-value meeting at Ahmedabad bullion trade market.
-30,43,Ananya Das,Person,10,Operation Silver Line,26.7271,88.3953,2025-01-18 19:40:00,Intercepted meeting at Siliguri corridor checkpoint.
-35,55,Swift Global Logistics Ltd,Organization,4,Operation Falcon Wing,28.6139,77.209,2025-01-20 06:00:00,Interstate fleet convoy dispatched from Delhi to Kolkata.
-16,19,GJ-01-EE-1290 (Tata Truck Fleet),Vehicle,6,Operation Dark Port,21.1702,72.8311,2025-01-26 23:15:00,Highway checkpoint crossing at Surat bypass.
-24,30,Priya Sharma,Person,8,Case #2025-HYD-55: Tech Park Extortion,17.4474,78.3762,2025-02-02 22:15:00,Live extortion payment received at HITEC City server node.
-36,60,Sunil 'Bhai' Deshmukh,Person,15,Operation Shadow Hawk,28.6139,77.209,2025-02-05 21:30:00,Encrypted conference bridge call across 4 regional leaders.
-37,1,Kabir Khan,Person,15,Operation Shadow Hawk,26.9124,75.7873,2025-02-12 18:00:00,Key operative coordination session in Jaipur safehouse.
-38,15,Rahul Verma,Person,15,Operation Shadow Hawk,23.0722,72.6347,2025-02-18 13:20:00,Gold bullion clearance verification at Ahmedabad airport terminal.
-39,29,Arjun Mehta,Person,15,Operation Shadow Hawk,12.9784,77.6408,2025-02-25 04:10:00,Zero-day vulnerability payload deployed against defense supplier.
-40,43,Ananya Das,Person,15,Operation Shadow Hawk,23.08,88.87,2025-03-01 07:45:00,Border crossing clearance stamped at Petrapole international gate.
+event_id, entity_id, entity_name                        , entity_type , case_id, case_title                            , latitude, longitude, timestamp          , location_telemetry_description
+       1,         1, Kabir Khan                         , Person      ,       1, Operation Iron Grid                   ,  28.6562,   77.241 , 2024-09-12 14:30:00, Encrypted satellite ping intercepted near Old Delhi safehouse.
+       9,        15, Rahul Verma                        , Person      ,       2, Case #2024-ND-89: Hawala Matrix       ,  18.95  ,   72.83  , 2024-09-15 18:00:00, Hawala cash courier collection reported in Zaveri Bazaar.
+      17,        29, Arjun Mehta                        , Person      ,       3, The Bengaluru Crypto Heist            ,  12.9784,   77.6408, 2024-09-20 03:22:00, Malicious transaction relay deployed from Indiranagar node.
+      25,        43, Ananya Das                         , Person      ,      10, Operation Silver Line                 ,  22.553 ,   88.351 , 2024-09-25 12:00:00, "Counterfeit consignment documents notarized in Park Street, Kolkata."
+       2,         2, Vikram Malhotra                    , Person      ,       2, Case #2024-ND-89: Hawala Matrix       ,  28.6315,   77.2167, 2024-09-28 11:15:00, Wire transfer of ₹1.8 Cr initiated from Connaught Place branch.
+      10,        17, Fatima Zaidi                       , Person      ,       2, Case #2024-ND-89: Hawala Matrix       ,  19.06  ,   72.86  , 2024-10-02 14:00:00, Offshore telegraphic transfer authorization signed at BKC complex.
+       3,         5, DL-01-AB-9988 (Toyota Fortuner)    , Vehicle     ,       4, Operation Falcon Wing                 ,  28.3842,   76.974 , 2024-10-04 22:45:00, "Toll plaza scan at Kherki Daula Toll, NH-48 heading to Jaipur."
+      18,        30, Priya Sharma                       , Person      ,       3, The Bengaluru Crypto Heist            ,  12.9352,   77.6245, 2024-10-08 13:45:00, Crypto tumbler split transaction routed through Monero pool.
+      26,        44, Subhash Roy                        , Person      ,      10, Operation Silver Line                 ,  23.08  ,   88.87  , 2024-10-15 05:00:00, Border cargo dispatch organized at Petrapole border post.
+       4,         3, Pooja Singhal                      , Person      ,       4, Operation Falcon Wing                 ,  28.3512,   76.9428, 2024-10-18 16:20:00, Meeting documented at Manesar logistics warehouse terminal.
+      11,        16, Sameer Merchant                    , Person      ,       6, Operation Dark Port                   ,  18.9498,   72.951 , 2024-10-22 08:30:00, Customs container release clearance forged at Nhava Sheva Port.
+      19,        31, Karthik Reddy                      , Person      ,       8, Case #2025-HYD-55: Tech Park Extortion,  17.4474,   78.3762, 2024-10-25 18:10:00, VoIP spoof server activated in HITEC City data rack.
+      31,        60, Sunil 'Bhai' Deshmukh              , Person      ,      15, Operation Shadow Hawk                 ,  26.9124,   75.7873, 2024-10-30 21:00:00, Secret summit detected at heritage luxury resort in Jaipur.
+       5,         4, Tariq Sheikh                       , Person      ,       9, Project Nightfall                     ,  28.6562,   77.241 , 2024-11-01 09:40:00, Physical surveillance confirmed suspect presence near Red Fort corridor.
+      20,        33, TS-09-FA-8899 (Tesla Model 3)      , Vehicle     ,       8, Case #2025-HYD-55: Tech Park Extortion,  17.4401,   78.3489, 2024-11-05 21:00:00, Fastag toll capture at Outer Ring Road Gachibowli junction.
+      27,        45, Bikramjit Sen                      , Person      ,       6, Operation Dark Port                   ,  22.56  ,   88.31  , 2024-11-08 17:30:00, "River barge departure logged at Shalimar Yard, Howrah."
+      12,        18, MH-02-CD-7744 (Mercedes E-Class)   , Vehicle     ,       2, Case #2024-ND-89: Hawala Matrix       ,  19.0368,   72.8172, 2024-11-10 20:50:00, Automatic Number Plate Recognition hit on Bandra-Worli Sea Link.
+       6,        13, Rohit Rawat                        , Person      ,       4, Operation Falcon Wing                 ,  28.49  ,   77.08  , 2024-11-15 19:10:00, Vehicle handoff intercepted by highway patrol near Gurugram cyber hub.
+      21,        42, Naveen Iyer                        , Person      ,       7, The Cyber Syndicate V3                ,  17.4474,   78.3762, 2024-11-22 04:50:00, Intrusion log generated on AWS Mumbai region targeting payment gateway.
+      28,        47, WB-19-TR-7821 (Ashok Leyland Cargo), Vehicle     ,      10, Operation Silver Line                 ,  22.68  ,   88.29  , 2024-11-27 14:20:00, Cargo weighbridge log at Dankuni toll corridor.
+      13,        28, Farhan Qureshi                     , Person      ,       6, Operation Dark Port                   ,  18.9498,   72.951 , 2024-11-29 01:10:00, Cargo shift detected at JNPT container yard under false manifest.
+       7,         1, Kabir Khan                         , Person      ,      11, Case #2025-DL-302: Red Fort Espionage ,  28.68  ,   77.22  , 2024-12-01 02:15:00, "High-frequency radio transmitter activated in Civil Lines, Delhi."
+      32,        60, Sunil 'Bhai' Deshmukh              , Person      ,      15, Operation Shadow Hawk                 ,  19.0896,   72.8656, 2024-12-05 16:30:00, Private charter flight logged from Mumbai to Delhi.
+      14,        26, Verma Diamond Exports Pvt Ltd      , Organization,       2, Case #2024-ND-89: Hawala Matrix       ,  18.952 ,   72.832 , 2024-12-14 11:30:00, Bulk consignment of industrial rough diamonds cleared without GST.
+      22,        40, NovaCore Cybersecurity Labs        , Organization,       3, The Bengaluru Crypto Heist            ,  12.9784,   77.6408, 2024-12-19 10:00:00, Subpoena served regarding illicit VPN tunnel exit node.
+      29,        53, Eastern Silk & Logistics Hub       , Organization,      10, Operation Silver Line                 ,  22.56  ,   88.31  , 2024-12-22 11:00:00, Customs search warrant executed; undeclared electronics seized.
+      33,        56, Hawala Clearing House Alpha        , Organization,       2, Case #2024-ND-89: Hawala Matrix       ,  28.6139,   77.209 , 2024-12-28 23:59:00, Bulk reconciliation ledger synchronized between Delhi & Mumbai cells.
+      23,        29, Arjun Mehta                        , Person      ,      13, Case #2024-BLR-401: Cloud Breach      ,  12.9716,   77.5946, 2025-01-03 15:30:00, Decrypted laptop image retrieved containing 400 private keys.
+       8,        11, Old Delhi Safehouse #4             , Location    ,       1, Operation Iron Grid                   ,  28.6562,   77.241 , 2025-01-08 04:30:00, Raid executed; seizure of 14 burner SIM cards and ledgers.
+      34,        57, DarkPool Mixer Node #9             , Organization,       3, The Bengaluru Crypto Heist            ,  12.9716,   77.5946, 2025-01-10 03:00:00, High-volume $2.1M USDT bridge swap completed via decentralized pool.
+      15,        15, Rahul Verma                        , Person      ,      12, Operation Golden Route                ,  23.0225,   72.5714, 2025-01-12 17:00:00, High-value meeting at Ahmedabad bullion trade market.
+      30,        43, Ananya Das                         , Person      ,      10, Operation Silver Line                 ,  26.7271,   88.3953, 2025-01-18 19:40:00, Intercepted meeting at Siliguri corridor checkpoint.
+      35,        55, Swift Global Logistics Ltd         , Organization,       4, Operation Falcon Wing                 ,  28.6139,   77.209 , 2025-01-20 06:00:00, Interstate fleet convoy dispatched from Delhi to Kolkata.
+      16,        19, GJ-01-EE-1290 (Tata Truck Fleet)   , Vehicle     ,       6, Operation Dark Port                   ,  21.1702,   72.8311, 2025-01-26 23:15:00, Highway checkpoint crossing at Surat bypass.
+      24,        30, Priya Sharma                       , Person      ,       8, Case #2025-HYD-55: Tech Park Extortion,  17.4474,   78.3762, 2025-02-02 22:15:00, Live extortion payment received at HITEC City server node.
+      36,        60, Sunil 'Bhai' Deshmukh              , Person      ,      15, Operation Shadow Hawk                 ,  28.6139,   77.209 , 2025-02-05 21:30:00, Encrypted conference bridge call across 4 regional leaders.
+      37,         1, Kabir Khan                         , Person      ,      15, Operation Shadow Hawk                 ,  26.9124,   75.7873, 2025-02-12 18:00:00, Key operative coordination session in Jaipur safehouse.
+      38,        15, Rahul Verma                        , Person      ,      15, Operation Shadow Hawk                 ,  23.0722,   72.6347, 2025-02-18 13:20:00, Gold bullion clearance verification at Ahmedabad airport terminal.
+      39,        29, Arjun Mehta                        , Person      ,      15, Operation Shadow Hawk                 ,  12.9784,   77.6408, 2025-02-25 04:10:00, Zero-day vulnerability payload deployed against defense supplier.
+      40,        43, Ananya Das                         , Person      ,      15, Operation Shadow Hawk                 ,  23.08  ,   88.87  , 2025-03-01 07:45:00, Border crossing clearance stamped at Petrapole international gate.

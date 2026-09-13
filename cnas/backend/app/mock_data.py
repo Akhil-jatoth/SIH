@@ -2,10 +2,47 @@ import random
 import hashlib
 from datetime import datetime, timedelta
 from sqlalchemy.orm import Session
-from .models import Entity, Relationship, Case, Event, AuditLog
+from .models import Entity, Relationship, Case, Event, AuditLog, MissionTransfer
 
 def seed_database(db: Session):
-    # Check if already seeded
+    # Ensure demo mission transfers exist even if database was previously seeded
+    if db.query(MissionTransfer).count() == 0:
+        demo_code_1 = "GARUDA#9941"
+        code_hash_1 = hashlib.sha256(f"CBI_SALT_{demo_code_1}_2026".encode()).hexdigest()
+        now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S IST")
+        first_case = db.query(Case).first()
+        demo_transfer_1 = MissionTransfer(
+            operation_name="OPERATION CHAKRAVYUH",
+            code_word_hash=code_hash_1,
+            case_id=first_case.id if first_case else 1,
+            outgoing_officer_name="SP Kabir Rao, IPS",
+            outgoing_officer_badge="CBI-HQ-8841-DL",
+            outgoing_officer_rank="Superintendent of Police",
+            outgoing_officer_department="Special Crime & Cyber Forensics Wing",
+            outgoing_officer_clearance="LEVEL-V TOP SECRET // LES",
+            outgoing_officer_zone="CBI HQ, Lodhi Road, New Delhi",
+            outgoing_officer_service_no="IPS-2012-7729",
+            handover_notes="Handing over prime custody of interstate Hawala & Cyber Syndicate dossier. All burner intercept logs and shell bank accounts cataloged. Target Vikram Malhotra has moved assets to Manesar transit hub.",
+            target_officer_name="DSP Vikram Deshmukh",
+            target_officer_badge="CBI-SCB-4092-MB",
+            status="LOCKED_PENDING",
+            failed_attempts=0,
+            max_attempts=3,
+            created_at=now_str,
+            updated_at=now_str,
+            payload_json={
+                "case_id": first_case.id if first_case else 1,
+                "case_title": first_case.title if first_case else "Operation Iron Grid",
+                "status": "Active",
+                "description": "Cross-state illicit syndicate communication network operating via burner lines.",
+                "entities_count": 8,
+                "events_count": 5
+            }
+        )
+        db.add(demo_transfer_1)
+        db.commit()
+
+    # Check if main dataset already seeded
     if db.query(Entity).count() > 0:
         return
 
@@ -385,5 +422,42 @@ def seed_database(db: Session):
         db.add(audit)
         prev_hash = curr_hash
     db.commit()
+
+    # 6. Seed Demo Mission Transfer Handover Packages
+    if db.query(MissionTransfer).count() == 0:
+        demo_code_1 = "GARUDA#9941"
+        code_hash_1 = hashlib.sha256(f"CBI_SALT_{demo_code_1}_2026".encode()).hexdigest()
+        
+        now_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S IST")
+        demo_transfer_1 = MissionTransfer(
+            operation_name="OPERATION CHAKRAVYUH",
+            code_word_hash=code_hash_1,
+            case_id=cases[0].id if cases else 1,
+            outgoing_officer_name="SP Kabir Rao, IPS",
+            outgoing_officer_badge="CBI-HQ-8841-DL",
+            outgoing_officer_rank="Superintendent of Police",
+            outgoing_officer_department="Special Crime & Cyber Forensics Wing",
+            outgoing_officer_clearance="LEVEL-V TOP SECRET // LES",
+            outgoing_officer_zone="CBI HQ, Lodhi Road, New Delhi",
+            outgoing_officer_service_no="IPS-2012-7729",
+            handover_notes="Handing over prime custody of interstate Hawala & Cyber Syndicate dossier. All burner intercept logs and shell bank accounts cataloged. Target Vikram Malhotra has moved assets to Manesar transit hub.",
+            target_officer_name="DSP Vikram Deshmukh",
+            target_officer_badge="CBI-SCB-4092-MB",
+            status="LOCKED_PENDING",
+            failed_attempts=0,
+            max_attempts=3,
+            created_at=now_str,
+            updated_at=now_str,
+            payload_json={
+                "case_id": cases[0].id if cases else 1,
+                "case_title": cases[0].title if cases else "Operation Iron Grid",
+                "status": "Active",
+                "description": "Cross-state illicit syndicate communication network operating via burner lines.",
+                "entities_count": 8,
+                "events_count": 5
+            }
+        )
+        db.add(demo_transfer_1)
+        db.commit()
 
     print(f"Database seeded successfully: {len(entity_records)} entities, {len(relationships_data)} relationships, {len(cases)} cases, {len(event_templates)} events.")

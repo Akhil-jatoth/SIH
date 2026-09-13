@@ -9,10 +9,21 @@ import {
   RelatedCase,
   TimelineEvent,
   AssistantResponse,
-  AuditLog
+  AuditLog,
+  EntityDossier,
+  CoordinatesResolveResponse,
+  IngestEntityPayload,
+  IngestRelationshipPayload,
+  IngestDatasetPayload,
+  IngestResponse,
+  MissionTransfer,
+  CreateMissionTransferPayload,
+  UnlockMissionPayload,
+  UnlockMissionResponse,
+  IntruderBreachAlert
 } from '../types';
 
-const API_BASE = 'http://localhost:8000/api';
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8000/api';
 
 async function fetchJson<T>(endpoint: string, options?: RequestInit): Promise<T> {
   const url = `${API_BASE}${endpoint}`;
@@ -43,6 +54,7 @@ export const api = {
 
   // Graph Data
   getFullGraph: () => fetchJson<GraphData>('/graph/full'),
+  getEntityDossier: (entityId: number) => fetchJson<EntityDossier>(`/graph/entity/${entityId}/dossier`),
   getKeyEntities: (topN = 10) => fetchJson<KeyEntity[]>(`/graph/key-entities?top_n=${topN}`),
   getCommunities: () => fetchJson<Community[]>('/graph/communities'),
   getAnomalies: () => fetchJson<Anomaly[]>('/graph/anomalies'),
@@ -76,9 +88,11 @@ export const api = {
       found: boolean;
       query: string;
       message?: string;
+      person_name?: string;
       target?: {
         id: number;
         name: string;
+        person_name?: string;
         type: string;
         risk_score: number;
         attributes: Record<string, any>;
@@ -99,6 +113,10 @@ export const api = {
       latest_location?: {
         latitude: number;
         longitude: number;
+        pincode?: string;
+        city?: string;
+        state?: string;
+        area?: string;
         description: string;
         timestamp: string;
         case_id?: number;
@@ -108,9 +126,80 @@ export const api = {
       movement_history?: Array<{
         latitude: number;
         longitude: number;
+        pincode?: string;
         description: string;
         timestamp: string;
         case_title?: string;
       }>;
     }>(`/investigate/search?query=${encodeURIComponent(query)}`),
+
+  // Entity Statement Download URL
+  getEntityStatementDownloadUrl: (entityId: number, format: 'csv' | 'json' = 'csv') =>
+    `${API_BASE}/graph/entity/${entityId}/statement/download?format=${format}`,
+
+  // Coordinates Resolution & Location Lookup
+  resolveCoordinates: (lat: number, lon: number, radiusKm: number = 100) =>
+    fetchJson<CoordinatesResolveResponse>(`/coordinates/resolve?lat=${lat}&lon=${lon}&radius_km=${radiusKm}`),
+
+  searchCoordinates: (query: string) =>
+    fetchJson<{
+      matched: boolean;
+      latitude: number;
+      longitude: number;
+      formatted_coords: string;
+      area: string;
+      city: string;
+      state: string;
+      pincode: string;
+      address: string;
+    }>(`/coordinates/search?query=${encodeURIComponent(query)}`),
+
+  // In-Investigation Dynamic Data Ingestion
+  ingestEntity: (payload: IngestEntityPayload) =>
+    fetchJson<IngestResponse>('/ingest/entity', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  ingestRelationship: (payload: IngestRelationshipPayload) =>
+    fetchJson<IngestResponse>('/ingest/relationship', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  ingestDataset: (payload: IngestDatasetPayload) =>
+    fetchJson<IngestResponse>('/ingest/dataset', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  // CBI Secure Mission Transfer & Intruder Protocol
+  createMissionTransfer: (payload: CreateMissionTransferPayload) =>
+    fetchJson<{ success: boolean; message: string; transfer: MissionTransfer }>('/mission/transfer', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  getMissionTransfers: () => fetchJson<MissionTransfer[]>('/mission/transfers'),
+
+  unlockMissionTransfer: (payload: UnlockMissionPayload) =>
+    fetchJson<UnlockMissionResponse>('/mission/unlock', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    }),
+
+  getLatestBreachAlerts: () => fetchJson<IntruderBreachAlert[]>('/mission/alerts/latest'),
+
+  acknowledgeBreachAlert: (alertId: number) =>
+    fetchJson<{ success: boolean; message: string }>(`/mission/alerts/${alertId}/acknowledge`, {
+      method: 'POST',
+    }),
+
+  deleteMissionTransfer: (transferId: number) =>
+    fetchJson<{ success: boolean; message: string }>(`/mission/transfers/${transferId}`, {
+      method: 'DELETE',
+    }),
 };
+
+
+

@@ -66,3 +66,53 @@ class AuditLog(Base):
     actor = Column(String(100), default="Investigator #4092")
     details = Column(Text, nullable=False)
     block_hash = Column(String(64), nullable=False)
+
+
+class MissionTransfer(Base):
+    __tablename__ = "mission_transfers"
+
+    id = Column(Integer, primary_key=True, index=True)
+    operation_name = Column(String(255), nullable=False, index=True)  # Public, visible to anyone
+    code_word_hash = Column(String(255), nullable=False)  # Hidden, SHA256 hashed
+    case_id = Column(Integer, ForeignKey("cases.id"), nullable=True)
+    
+    # Present / Outgoing CBI Officer Details
+    outgoing_officer_name = Column(String(255), nullable=False)
+    outgoing_officer_badge = Column(String(100), nullable=False)
+    outgoing_officer_rank = Column(String(100), nullable=False)
+    outgoing_officer_department = Column(String(255), nullable=False)
+    outgoing_officer_clearance = Column(String(100), default="LEVEL-V TOP SECRET")
+    outgoing_officer_zone = Column(String(255), nullable=True)
+    outgoing_officer_service_no = Column(String(100), nullable=True)
+    handover_notes = Column(Text, nullable=True)
+    
+    # Target Recipient Officer Details
+    target_officer_name = Column(String(255), nullable=False)
+    target_officer_badge = Column(String(100), nullable=True)
+    
+    # Security State & Life Cycle
+    status = Column(String(50), default="LOCKED_PENDING")  # LOCKED_PENDING, CLAIMED, COMPROMISED_ALERT, DESTROYED_PURGED
+    failed_attempts = Column(Integer, default=0)
+    max_attempts = Column(Integer, default=3)
+    created_at = Column(String(50), nullable=False)
+    updated_at = Column(String(50), nullable=True)
+    
+    # Serialized Encrypted Intelligence Payload
+    payload_json = Column(JSON, default=dict)
+
+
+class IntruderBreachLog(Base):
+    __tablename__ = "intruder_breach_logs"
+
+    id = Column(Integer, primary_key=True, index=True)
+    transfer_id = Column(Integer, nullable=True)
+    operation_name = Column(String(255), nullable=False)
+    attempt_number = Column(Integer, nullable=False)
+    entered_code_sample = Column(String(50), default="***MASKED***")
+    face_snapshot_base64 = Column(Text, nullable=True)  # Captured face image from camera
+    timestamp = Column(String(50), nullable=False)
+    ip_address = Column(String(100), default="127.0.0.1 (Local Terminal)")
+    user_agent = Column(String(255), default="CBI Field Terminal v2.4")
+    severity = Column(String(50), default="CRITICAL_BREACH")
+    status = Column(String(50), default="ACTIVE_ALERT")  # ACTIVE_ALERT, VIEWED, PURGED
+
