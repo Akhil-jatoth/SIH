@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import {
   Shield,
   Lock,
@@ -356,8 +357,8 @@ export const MissionTransferModal: React.FC<MissionTransferModalProps> = ({
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-6 sm:pt-[148px] bg-slate-950 sm:bg-black/85 sm:backdrop-blur-md overflow-y-auto">
+  const modalContent = (
+    <div className="fixed inset-0 z-[99999] flex flex-col sm:items-center sm:justify-center p-0 sm:p-6 bg-slate-950/95 sm:bg-black/85 sm:backdrop-blur-md overflow-hidden">
       {/* Hidden Video & Canvas for WebCam Verification */}
       <video ref={videoRef} autoPlay playsInline muted className="hidden" />
       <canvas ref={canvasRef} className="hidden" />
@@ -366,10 +367,10 @@ export const MissionTransferModal: React.FC<MissionTransferModalProps> = ({
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.98 }}
-        className="relative w-full h-full sm:h-auto sm:max-w-4xl sm:max-h-[calc(100vh-165px)] sm:rounded-2xl bg-slate-950 sm:border sm:border-slate-800 shadow-2xl flex flex-col overflow-hidden text-slate-100 font-sans"
+        className="relative w-full h-full sm:h-auto sm:max-w-4xl sm:max-h-[90vh] bg-slate-950 sm:bg-slate-900 border-0 sm:border sm:border-slate-800 sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden text-slate-100 font-sans"
       >
         {/* Header */}
-        <div className="p-3.5 sm:p-5 border-b border-slate-800 bg-slate-900/80 flex items-center justify-between shrink-0">
+        <div className="p-3.5 sm:p-5 border-b border-slate-800 bg-slate-900/90 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={onClose}
@@ -1021,4 +1022,6 @@ export const MissionTransferModal: React.FC<MissionTransferModalProps> = ({
       </motion.div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : modalContent;
 };

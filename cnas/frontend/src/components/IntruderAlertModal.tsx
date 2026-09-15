@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import {
   AlertTriangle,
   Camera,
@@ -132,17 +133,17 @@ export const IntruderAlertModal: React.FC<IntruderAlertModalProps> = ({
 
   if (!isOpen || !alert) return null;
 
-  return (
+  const modalContent = (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 pt-[144px] pb-6 sm:pt-[148px] bg-black/85 backdrop-blur-md overflow-y-auto">
+      <div className="fixed inset-0 z-[99999] flex items-center justify-center p-0 sm:p-4 bg-black/90 backdrop-blur-md overflow-hidden">
         <motion.div
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          className="relative w-full max-w-2xl max-h-[calc(100vh-165px)] rounded-2xl border shadow-2xl overflow-hidden bg-gradient-to-b from-red-950/85 via-slate-950 to-slate-950 border-red-500/60 shadow-red-900/40"
+          className="relative w-full h-full sm:h-auto sm:max-w-2xl sm:max-h-[90vh] sm:rounded-2xl border-0 sm:border shadow-2xl overflow-hidden bg-gradient-to-b from-red-950/90 via-slate-950 to-slate-950 border-red-500/60 shadow-red-900/40 flex flex-col"
         >
           {/* Top Flashing Strobe Bar */}
-          <div className="h-2 w-full bg-gradient-to-r from-red-600 via-rose-500 to-amber-500 animate-pulse" />
+          <div className="h-2 w-full bg-gradient-to-r from-red-600 via-rose-500 to-amber-500 animate-pulse shrink-0" />
 
           {/* Header */}
           <div className="p-5 border-b border-red-500/30 flex items-center justify-between">
@@ -351,4 +352,6 @@ export const IntruderAlertModal: React.FC<IntruderAlertModalProps> = ({
       </div>
     </AnimatePresence>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : modalContent;
 };

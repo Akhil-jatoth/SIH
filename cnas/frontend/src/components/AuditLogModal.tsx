@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { ShieldCheck, Lock, Hash, X, CheckCircle2, Clock, UserCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { api } from '../services/api';
@@ -25,17 +26,17 @@ export const AuditLogModal: React.FC<AuditLogModalProps> = ({ isOpen, onClose })
 
   if (!isOpen) return null;
 
-  return (
+  const modalContent = (
     <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-4 sm:pt-[148px] bg-[#0c131f] sm:bg-black/75 sm:backdrop-blur-md overflow-y-auto">
+      <div className="fixed inset-0 z-[99999] flex flex-col sm:items-center sm:justify-center p-0 sm:p-4 bg-slate-950/95 sm:bg-black/80 sm:backdrop-blur-md overflow-hidden">
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.98 }}
-          className="w-full h-full sm:h-auto sm:max-w-3xl sm:max-h-[calc(100vh-165px)] flex flex-col sm:rounded-2xl bg-[#0c131f] sm:border sm:border-blue-500/40 shadow-glowBlue overflow-hidden"
+          className="w-full h-full sm:h-auto sm:max-w-3xl sm:max-h-[90vh] flex flex-col sm:rounded-2xl bg-[#0c131f] border-0 sm:border sm:border-blue-500/40 shadow-glowBlue overflow-hidden text-slate-100"
         >
           {/* Header */}
-          <div className="p-3.5 sm:p-5 border-b border-white/10 flex items-center justify-between bg-gradient-to-r from-blue-950/40 to-slate-900/40 shrink-0">
+          <div className="p-3.5 sm:p-5 border-b border-white/10 flex items-center justify-between bg-gradient-to-r from-blue-950/70 to-slate-900/70 shrink-0">
             <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={onClose}
@@ -67,7 +68,7 @@ export const AuditLogModal: React.FC<AuditLogModalProps> = ({ isOpen, onClose })
           </div>
 
           {/* Body */}
-          <div className="p-5 overflow-y-auto space-y-3.5 flex-1 bg-[#0c131f]">
+          <div className="p-4 sm:p-5 overflow-y-auto space-y-3.5 flex-1 bg-[#0c131f] overscroll-contain">
             {loading ? (
               <div className="py-12 text-center text-slate-400 text-sm flex items-center justify-center gap-2">
                 <div className="w-4 h-4 border-2 border-blue-500 border-t-transparent rounded-full animate-spin" />
@@ -77,7 +78,7 @@ export const AuditLogModal: React.FC<AuditLogModalProps> = ({ isOpen, onClose })
               logs.map((log, idx) => (
                 <div
                   key={log.id}
-                  className="p-4 rounded-xl bg-white/[0.02] border border-white/5 hover:border-blue-500/30 transition-colors"
+                  className="p-4 rounded-xl bg-white/[0.03] border border-white/10 hover:border-blue-500/30 transition-colors"
                 >
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-2">
@@ -115,10 +116,10 @@ export const AuditLogModal: React.FC<AuditLogModalProps> = ({ isOpen, onClose })
           </div>
 
           {/* Footer */}
-          <div className="p-4 border-t border-white/10 bg-slate-950/60 flex items-center justify-between text-xs text-slate-400">
+          <div className="p-3.5 sm:p-4 border-t border-white/10 bg-slate-950/80 flex items-center justify-between text-xs text-slate-400 shrink-0">
             <div className="flex items-center gap-2">
               <Lock className="w-4 h-4 text-blue-400" />
-              <span>Zero-knowledge validation ensures courtroom compliance and investigator accountability.</span>
+              <span className="text-[11px] sm:text-xs">Zero-knowledge validation ensures courtroom compliance.</span>
             </div>
             <button
               onClick={onClose}
@@ -131,4 +132,6 @@ export const AuditLogModal: React.FC<AuditLogModalProps> = ({ isOpen, onClose })
       </div>
     </AnimatePresence>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : modalContent;
 };

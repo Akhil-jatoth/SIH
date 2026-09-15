@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useNavigate } from 'react-router-dom';
 import {
   X,
@@ -163,9 +164,9 @@ export const SuspectRadarModal: React.FC<SuspectRadarModalProps> = ({
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-6 sm:pt-[148px] bg-slate-950 sm:bg-black/85 sm:backdrop-blur-md overflow-y-auto">
-      <div className="relative w-full h-full sm:h-auto sm:max-w-4xl bg-slate-900 sm:border sm:border-sky-500/40 sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden text-slate-100 sm:max-h-[calc(100vh-165px)]">
+  const modalContent = (
+    <div className="fixed inset-0 z-[99999] flex flex-col sm:items-center sm:justify-center p-0 sm:p-6 bg-slate-950/95 sm:bg-black/85 sm:backdrop-blur-md overflow-hidden">
+      <div className="relative w-full h-full sm:h-auto sm:max-w-4xl bg-slate-900 border-0 sm:border sm:border-sky-500/40 sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden text-slate-100 sm:max-h-[90vh]">
 
         {/* Header Bar */}
         <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 sm:py-4 bg-slate-950 border-b border-slate-800 shrink-0">
@@ -521,4 +522,6 @@ export const SuspectRadarModal: React.FC<SuspectRadarModalProps> = ({
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : modalContent;
 };

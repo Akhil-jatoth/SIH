@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { createPortal } from 'react-dom';
 import {
   X,
   Printer,
@@ -178,9 +179,9 @@ export const PersonStatementModal: React.FC<PersonStatementModalProps> = ({
     document.body.removeChild(link);
   };
 
-  return (
-    <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-6 sm:pt-[148px] bg-slate-950 sm:bg-black/85 sm:backdrop-blur-md overflow-y-auto official-print-modal print:p-0 print:m-0 print:static print:bg-white print:overflow-visible">
-      <div className="relative w-full h-full sm:h-auto sm:max-w-4xl sm:max-h-[calc(100vh-165px)] bg-slate-900 sm:border sm:border-sky-500/40 sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden text-slate-100 print:bg-white print:text-black print:border-none print:shadow-none print:max-h-none print:w-full print:rounded-none print:overflow-visible">
+  const modalContent = (
+    <div className="fixed inset-0 z-[99999] flex flex-col sm:items-center sm:justify-center p-0 sm:p-6 bg-slate-950/95 sm:bg-black/85 sm:backdrop-blur-md overflow-hidden official-print-modal print:p-0 print:m-0 print:static print:bg-white print:overflow-visible">
+      <div className="relative w-full h-full sm:h-auto sm:max-w-4xl sm:max-h-[90vh] bg-slate-900 border-0 sm:border sm:border-sky-500/40 sm:rounded-3xl shadow-2xl flex flex-col overflow-hidden text-slate-100 print:bg-white print:text-black print:border-none print:shadow-none print:max-h-none print:w-full print:rounded-none print:overflow-visible">
 
         {/* Control Header Toolbar (Non-printable) */}
         <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3.5 sm:py-4 bg-slate-950 border-b border-slate-800 print:hidden shrink-0">
@@ -545,4 +546,6 @@ export const PersonStatementModal: React.FC<PersonStatementModalProps> = ({
       </div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : modalContent;
 };

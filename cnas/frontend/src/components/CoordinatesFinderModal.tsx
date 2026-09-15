@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   MapPin,
   Search,
@@ -138,13 +139,13 @@ export const CoordinatesFinderModal: React.FC<CoordinatesFinderModalProps> = ({
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-4 sm:pt-[148px] bg-[#1e0a26] sm:bg-black/85 sm:backdrop-blur-md overflow-y-auto">
+  const modalContent = (
+    <div className="fixed inset-0 z-[99999] flex flex-col sm:items-center sm:justify-center p-0 sm:p-4 bg-slate-950/95 sm:bg-black/85 sm:backdrop-blur-md overflow-hidden">
       <motion.div
         initial={{ opacity: 0, scale: 0.98, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.98, y: 10 }}
-        className="w-full h-full sm:h-auto sm:max-w-3xl sm:rounded-3xl bg-[#1e0a26] sm:border sm:border-sky-500/40 shadow-2xl overflow-hidden flex flex-col sm:max-h-[calc(100vh-165px)]"
+        className="w-full h-full sm:h-auto sm:max-w-3xl sm:rounded-3xl bg-[#1e0a26] border-0 sm:border sm:border-sky-500/40 shadow-2xl overflow-hidden flex flex-col sm:max-h-[90vh]"
       >
         {/* Header */}
         <div className="p-3.5 sm:p-5 bg-gradient-to-r from-sky-950/80 via-purple-950/80 to-[#1e0a26] border-b border-sky-500/30 flex items-center justify-between shrink-0">
@@ -452,4 +453,6 @@ export const CoordinatesFinderModal: React.FC<CoordinatesFinderModalProps> = ({
       </motion.div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : modalContent;
 };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import {
   UploadCloud,
   FileSpreadsheet,
@@ -237,13 +238,13 @@ DL-1AA-8921 Heavy Freight,Vehicle,0.72,DL-1AA-8921,Tata,Prima Container 40ft,Dar
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 z-[100] flex flex-col sm:items-center sm:justify-center sm:p-4 sm:pt-[148px] bg-[#1d0824] sm:bg-black/85 sm:backdrop-blur-md overflow-y-auto">
+  const modalContent = (
+    <div className="fixed inset-0 z-[99999] flex flex-col sm:items-center sm:justify-center p-0 sm:p-4 bg-slate-950/95 sm:bg-black/85 sm:backdrop-blur-md overflow-hidden">
       <motion.div
         initial={{ opacity: 0, scale: 0.98, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.98, y: 10 }}
-        className="w-full h-full sm:h-auto sm:max-w-3xl sm:rounded-3xl bg-[#1d0824] sm:border sm:border-fuchsia-500/40 shadow-2xl overflow-hidden flex flex-col sm:max-h-[calc(100vh-165px)]"
+        className="w-full h-full sm:h-auto sm:max-w-3xl sm:rounded-3xl bg-[#1d0824] border-0 sm:border sm:border-fuchsia-500/40 shadow-2xl overflow-hidden flex flex-col sm:max-h-[90vh]"
       >
         {/* Header */}
         <div className="p-3.5 sm:p-5 bg-gradient-to-r from-fuchsia-950/90 via-purple-950/90 to-[#1d0824] border-b border-fuchsia-500/30 flex items-center justify-between shrink-0">
@@ -710,4 +711,6 @@ DL-1AA-8921 Heavy Freight,Vehicle,0.72,DL-1AA-8921,Tata,Prima Container 40ft,Dar
       </motion.div>
     </div>
   );
+
+  return typeof document !== 'undefined' ? createPortal(modalContent, document.body) : modalContent;
 };
