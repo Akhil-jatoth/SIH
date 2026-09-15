@@ -75,11 +75,11 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return sessionStorage.getItem('cnas_auth') === 'true';
+    return localStorage.getItem('cnas_auth') === 'true';
   });
 
   const [user, setUser] = useState<User | null>(() => {
-    const saved = sessionStorage.getItem('cnas_user');
+    const saved = localStorage.getItem('cnas_user');
     if (saved) {
       try {
         return JSON.parse(saved);
@@ -103,8 +103,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
     setIsAuthenticated(true);
     setUser(authUser);
-    sessionStorage.setItem('cnas_auth', 'true');
-    sessionStorage.setItem('cnas_user', JSON.stringify(authUser));
+    localStorage.setItem('cnas_auth', 'true');
+    localStorage.setItem('cnas_user', JSON.stringify(authUser));
     return true;
   };
 
@@ -138,16 +138,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     setIsAuthenticated(true);
     setUser(authUser);
-    sessionStorage.setItem('cnas_auth', 'true');
-    sessionStorage.setItem('cnas_user', JSON.stringify(authUser));
+    localStorage.setItem('cnas_auth', 'true');
+    localStorage.setItem('cnas_user', JSON.stringify(authUser));
     return true;
   };
 
   const logout = () => {
     setIsAuthenticated(false);
     setUser(null);
-    sessionStorage.removeItem('cnas_auth');
-    sessionStorage.removeItem('cnas_user');
+    localStorage.removeItem('cnas_auth');
+    localStorage.removeItem('cnas_user');
   };
 
   return (

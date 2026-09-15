@@ -95,11 +95,22 @@ class IngestDatasetPayload(BaseModel):
     case_id: Optional[int] = None
     source_note: Optional[str] = "Live In-Investigation Ingestion"
 
-# 1. Health Check
+# 1. Health & Auth Endpoints
 @app.get("/")
 @app.get("/api/health")
 def health_check():
     return {"status": "ok", "service": "CNAS Intelligence Backend", "version": "1.0.0"}
+
+@app.get("/login")
+@app.post("/login")
+@app.get("/api/login")
+@app.post("/api/login")
+def auth_login_endpoint(payload: Optional[Dict[str, Any]] = None):
+    return {
+        "status": "success",
+        "authenticated": True,
+        "message": "CBI Intelligence Terminal Active"
+    }
 
 # 2. Stats Summary
 @app.get("/api/stats/summary")

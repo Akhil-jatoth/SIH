@@ -34,8 +34,14 @@ import { GlassPanel } from '../components/GlassPanel';
 import { CyberBackground } from '../components/CyberBackground';
 
 export const Login: React.FC = () => {
-  const { loginWithCbiCard, login } = useAuth();
+  const { isAuthenticated, loginWithCbiCard, login } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      navigate('/', { replace: true });
+    }
+  }, [isAuthenticated, navigate]);
 
   // Multi-step Authentication Stage: 1 = Credentials, 2 = ID Upload, 3 = Face Recognition, 4 = Final Smart Card Tap
   const [currentStage, setCurrentStage] = useState<1 | 2 | 3 | 4>(1);
